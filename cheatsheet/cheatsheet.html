@@ -1,0 +1,136 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="cheatsheet.css">
+</head>
+
+<body>
+  <div id="overall">
+
+    <div id="DOM-locating" class="group">
+      <div class="title">DOM locating elements</div>
+
+      <div class="bullet">
+        <code class="code">my_element = document.getElementById("foo")</code>
+        → <span class="what">returns the DOM element with that <code>id</code></span>
+      </div>
+
+      <div class="bullet bullet-sep">
+        <code class="code">my_element = document.querySelector(".myclass")</code>
+        → <span class="what">returns <b>the first</b> DOM element that matches
+          <br> a CSS selector
+        </span>
+      </div>
+
+      <div class="bullet bullet-sep">
+        <code class="code">my_elements = document.querySelectorAll(".myclass")</code>
+        → <span class="what">returns all DOM elements that matches
+          <br> a CSS selector; see below for how to iterate over that.
+        </span>
+      </div>
+
+    </div>
+
+    <div id="DOM-changing" class="group">
+      <div class="title">DOM changing / inspecting elements</div>
+
+
+      <div class="bullet">
+        <code class="code">my_element.style.display = "none"</code>
+        <span class="what">change propery <code>display</code>
+          on <code>my_element</code>
+          <br>to change a property whose name contains a dash,
+          <br> like <code>background-color</code>, use
+          <br><code>my_element.style.backgroundColor = "none"</code>
+      </div>
+
+      <div class="bullet">
+        <code class="code">my_element.textContent = "text"</code>
+        <span class="what">change the text inside a HTML element
+      </div>
+    </div>
+
+    <div id="DOM-adding" class="group">
+      <div class="title">DOM adding elements</div>
+
+
+      <div class="bullet">
+        <code class="code">my_div = document.createElement('div');</code>
+        <span class="what">create a <code>div</code>element; <b>warning</b>
+          <br>it still needs to be inserted somewhere !
+      </div>
+
+      <div class="bullet bullet-sep">
+        <code class="code"><pre>const svgNS = "http://www.w3.org/2000/svg";
+my_circle.createElementNS(svgNS, 'circle');</pre></code>
+        <span class="what">same but for the tags
+          that belong
+          <br>in the SVG family (svg itself, circle, rect, etc...)
+          <br>likewise it needs to be grafted in the tree somewhere
+      </div>
+
+      <div class="bullet">
+        <code class="code">father.append(my_div);</code>
+        <span class="what">inserts element <code>my_div</code>
+          as the last child of element <code>parent</code>
+          <br>this is how the newly-created element can become<br>
+          part of the whole tree
+      </div>
+
+    </div>
+
+    <div id="iterating" class="group">
+      <div class="title">DOM iterating over elements</div>
+
+      <div class="bullet">
+        <code class="code">for (let child of my_element.children)</code>
+        <span class="what">iterates over the children of a given DOM element
+        </span>
+      </div>
+
+      <div class="bullet">
+        <code class="code">for (let element of document.querySelectorAll(selector))
+        </code>
+        <span class="what">iterates over a NodeList or HTMLCollection, 
+          as returned by either <code>QuerySelectorAll</code> or
+          <code>getElementsByClassName</code>
+          <br>
+          <b><i>WARNING</i> DO NOT</b> use a <code>for (x <strike>in</strike> elements)</code>
+        </span>
+      </div>
+
+    </div>
+
+
+    <div id="callbacks" class="group">
+      <div class="title">arm callbacks <span class="normal">
+          <code>a_function</code> denotes a function object</code></span></div>
+
+      <div class="bullet">
+        <code class="code">window.addEventListener("load", a_function);</code>
+        <span class="what">registers <code>a_function()</code> to be triggered when document is fully loaded
+      </div>
+
+      <div class="bullet">
+        <code class="code">my_element.addEventListener("click", a_function);</code>
+        <span class="what">will cause <code>a_function(event)</code> to be called
+          <br>each time a user clicks on that element
+          <br>using <i>event</i> the function can access details on that event
+          <br>other event names are available instead of <code>"click"</code>
+        </span>
+      </div>
+
+      <div class="bullet">
+        <code class="code">setInterval(a_function, 400);</code>
+        <span class="what">causes <code>a_function()</code> to be called
+          <br> every 400ms <b>forever</b></span>
+      </div>
+
+      <div class="bullet bullet-sep">
+        <code class="code">setTimeout(a_function, 400);</code>
+        <span class="what">causes <code>a_function()</code> to be called<br><b>once</b> in 400ms</span>
+      </div>
+
+    </div>
+  </div>
+</body>

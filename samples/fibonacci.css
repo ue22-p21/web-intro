@@ -1,0 +1,27 @@
+h3 {
+    text-align: center;
+}
+#container_fibonacci {
+    margin: auto;
+}
+
+#container_fibonacci svg {
+    padding: 40px;
+    border: solid 1px;
+}
+
+.background {
+    stroke: black;
+    stroke-width: 1px;
+    fill: #eee;
+}
+
+rect {
+    fill: none;
+    stroke: #2d5dd3;
+}
+
+path {
+    stroke: #888;
+    stroke-width: 1px;
+}
