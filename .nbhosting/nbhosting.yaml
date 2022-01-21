@@ -1,7 +1,7 @@
 tracks:
-- description: basic contents with HTML and some CSS
-  id: html
-  name: 'course #1: HTML'
+- description: web intro
+  id: web
+  name: 'html + css + js'
   sections:
   - name: introduction
     notebooks:
@@ -9,17 +9,9 @@ tracks:
   - name: "HTML\_basics"
     notebooks:
     - "notebooks/1*.md"
-- description: advanced layout with CSS
-  id: css
-  name: 'course #2: CSS layout'
-  sections:
   - name: layout with CSS
     notebooks:
     - "notebooks/2*.md"
-- description: programming with JS
-  id: js
-  name: 'course #3: JS basics'
-  sections:
   - name: intro to JS
     notebooks:
     - "notebooks/3*.md"
