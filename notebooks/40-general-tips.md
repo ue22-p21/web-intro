@@ -12,7 +12,7 @@ kernelspec:
   language: javascript
   name: javascript
 nbhosting:
-  title: exo - calculator
+  title: coding tips
 rise:
   autolaunch: true
   slideNumber: c/t
