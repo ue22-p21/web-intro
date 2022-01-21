@@ -1,3 +1,3 @@
-# propos
+# purpose
 
-un bref cours d'introduction aux trois piliers des technos Web, HTML CSS et JavaScript
+a very short introduction course on the 3 Web pillars : HTML CSS and JavaScript
