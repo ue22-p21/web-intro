@@ -12,7 +12,7 @@ kernelspec:
   language: javascript
   name: javascript
 nbhosting:
-  title: practice & devel tools
+  title: blinking colors (& devel tools)
 rise:
   autolaunch: true
   slideNumber: c/t
@@ -64,7 +64,7 @@ then
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-something ike this
+something like this
 
 ```{code-cell}
 ---
