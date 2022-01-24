@@ -80,7 +80,7 @@ use your platform's package manager
 ```
 npm install -g ijavascript
 ijsinstall
-# Or run on windows: %appdata%\npm\ijsinstall
+# On some windows environment, if this does not work, you may try: %appdata%\npm\ijsinstall
 ```
 
 ## enable jupyter extensions
