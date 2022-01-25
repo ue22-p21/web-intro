@@ -1,5 +1,6 @@
 - [purpose](#purpose)
 - [installation](#installation)
+  - [foreword](#foreword)
   - [create a virtualenv](#create-a-virtualenv)
   - [install Python requirements](#install-python-requirements)
   - [install `npm`](#install-npm)
@@ -12,17 +13,23 @@
 
 # purpose
 
-a very short introduction course on the 3 Web pillars : HTML CSS and JavaScript
+this repo contains a very short introduction course on the 3 Web pillars : HTML CSS and JavaScript
 
 # installation
 
-**WARNING**
+as usual the course can be run on nbhosting; if you want to  to read it locally
+on your computer, do the following
 
-the installation instructions below can be reasonably achieved on MacOS and
-Linux; note that on Windows, they involve the installation of some Visual-Studio
-components, which is a little intrusive and take a looonng time...
 
-in order to read this course on your computer, do the following
+## foreword
+
+* **PREREQUISITES**  
+  the instructions below assume you have installed the common stack used for the
+  S1 courses, namely `miniconda` + `bash` + `git` + `vs-code`
+* **WARNING**  
+  note that on Windows, the installation instructions below involve the
+  installation of some Visual-Studio components, which is a little intrusive and
+  take a looonng time...
 
 ## create a virtualenv
 
@@ -42,8 +49,8 @@ pip install -r requirements.txt
 
 ## install `npm`
 
-we need `npm` to install the JavaScript kernel for Jupyter
-there are numerous ways to install this, they all depend on your platform
+we need `npm` to install the JavaScript kernel for Jupyter;
+there are numerous ways to install this, they all depend on your platform (see below)
 
 in any case, once done, check your installation with
 
@@ -60,7 +67,7 @@ npm --version
 
 ### Linux
 
-use your platform's package manager
+use your platform's native package manager
 
 * redhat / fedora / centos
 
