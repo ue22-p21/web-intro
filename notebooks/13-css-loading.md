@@ -92,10 +92,13 @@ tools.sample_from_strings({html: separate_html, css: separate_css})
 
 ##### notes on relative URLs
 
-the way we load a css from the same folder as the html, is a consequence of a general rule to build so-called *relative* URLs, that work like this:
+the way we load a css from *the same folder* as the html  
+is a consequence of a general rule to build  
+so-called *relative* URLs, that work like this:
 
-if you have loaded a document as, say, <code>http://hostname.io/the/path/to.html</code>  
-then
+if you have loaded a document as, say  
+<code>http://hostname.io/the/path/to.html</code>  
+then **from within that document**:
 
 * <code>href="to.css"</code> is interpreted as <code>href="http://hostname.io/the/path/to.css"</code></li>
 * <code>href="/to.css"</code> is interpreted as <code>href="http://hostname.io/to.css"</code></li>
