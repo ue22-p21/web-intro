@@ -64,9 +64,10 @@ tools.init()
 ## general issue
 
 * the code can become the *callback hell* by cascading callbacks
-  (refer to the example on catching key and mouse events;  
-   observe how a set of **linear** tasks (load page, arm callbacks, trigger callbacks)  
-   results in **nested** callbacks)
+* refer to the example on catching key and mouse events  
+  observe how a set of **linear** tasks  
+  (load page, arm callbacks, trigger callbacks)  
+  results in **nested** callbacks
    
 * to mitigate the issue there are 2 tools
   * promise
@@ -74,15 +75,31 @@ tools.init()
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## promises
+## promises - what for
 
 +++
 
-a relatively new alternative to callbacks that tries to address the 'pyramid of Doom' as described in the article mentioned above
+a relatively new alternative to callbacks that tries to address  
+the issues known as either
+
+* the 'Callback Hell'
+  <img src="../media/callback-hell.png" width="400px">
+* also known as the 'Pyramid of Doom' 
+  <img src="../media/pyramid-of-doom.png" width="400px">
+  
+i.e. a programming technique where an essentially **sequential** business  
+ends up creating a **deeply nested** program structure
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## promises - example
+
++++ {"slideshow": {"slide_type": ""}}
 
 the following example tries to illustrate
 
-* that promises can deal with error conditions
+* that promises will let us write a sequential task linearly
+* that they can deal with error conditions
 * and that they allow to pass return values along the chain
 
 as you will see however, it clearly takes some time until you get to read promises fluently :)
@@ -105,24 +122,27 @@ failure_toggle = 1
 slideshow:
   slide_type: slide
 ---
+// run this cell several times over
+
 new Promise(
     function (resolve, reject) {
 
         // make it work or fail every other time
-        failure_toggle = ! failure_toggle;
+        failure_toggle = ! failure_toggle
 
         // a promise must use resolve or reject exactly once
         // depending on successful or not
         if (failure_toggle) {
             // in case of failure, do not wait
-            reject(1);
+            reject(1)
         } else {
             // in case of success, wait for 1 s
             console.log('YES')
             setTimeout(
-                () => { console.log("took some time"); 
-                        resolve(1);
-                      },
+                () => { 
+                    console.log("took some time")
+                    resolve(10)
+                },
             1000)
         }
     }
@@ -130,69 +150,67 @@ new Promise(
     // first argument to then is 
     // what to do in case of success (resolve is used)
     (result) => {
-        console.log(result);
-        return result * 2;
+        console.log(result)
+        return result * 2
     },
     // second argument is what to do
     // in the cases where reject is called
     (result) => console.log(`error with ${result}`)
 ).then(
     function (result) {
-        console.log(result);
-        return result * 3;
+        console.log(result)
+        return result * 3
     }
 )
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### more on promises and async
-
-for those interested, more details on promises can be found in the rest of [this chapter on javascript.info](https://javascript.info/async) [starting here](https://javascript.info/promise-basics)
-
-+++
 
 ## `async` keyword
 
 +++
 
-with `async` you can declare functions that are `promise` by default
+with `async` you can declare functions that return a `Promise` by default
 
 ```{code-cell}
-// when called this fonction will return a promise
-// just like the previous code
+// when called this fonction will return a Promise
+// this code behaves almost like the previous code, except
+// for the 1s delay (which will be in the next version)
+
 async function foo() {
     // make it work or fail every other time
-    failure_toggle = ! failure_toggle;
+    failure_toggle = ! failure_toggle
 
     // a promise must use resolve or reject exactly once
     // depending on successful or not
     if (failure_toggle) {
         // in case of failure, do not wait
-        throw 1; // Equivalent to reject(1);
+        throw 1 // Equivalent to reject(1);
     } else {
         // in case of success, wait for 1 s
-        return 1; // Equivalent to resolve(1);
+        return 10 // Equivalent to resolve(1);
     }
 }
 ```
 
 ```{code-cell}
-// Call the function as promise
-foo().then(
+// run this cell several times over
+
+// so we can call the function 
+// and use the result as a Promise
+foo()
+  .then(
     // first argument to then is in case of success (resolve is used)
     (result) => {
-        console.log(result);
-        return result * 2;
+        console.log(result)
+        return result * 2
     },
     // second is for the cases where reject is called
-    (result) => console.log(`error with ${result}`)
-).then(
+    (result) => console.log(`error with ${result}`))
+  .then(
     function (result) {
         console.log(result);
-        return result * 3;
+        return result * 3
     }
-);
+)
 ```
 
 ## `await` keyword
@@ -204,38 +222,47 @@ foo().then(
 * and so it cannot be used in the global scope
 
 ```{code-cell}
-async function foo() {
-    // make it work or fail every other time
-    failure_toggle = !failure_toggle;
+// this version now behaves exactly as the first example
 
-    // a promise must use resolve or reject exactly once
-    // depending on successful or not
-    if (failure_toggle) {
-        // in case of failure, do not wait
-        throw 1; // Equivalent to reject(1);
-    } else {
-        // in case of success, wait for 1 s
-        return await new Promise(
-            (resolve, reject) => {
-                setTimeout(() => resolve(1), 3000)
-            }
-        );
-    }
+async function sleep(result, milliseconds) {
+  return new Promise(resolve => setTimeout(resolve(result), milliseconds))
 }
 
-// Call the function as promise
-foo().then(
-    // first argument to then is in case of success (resolve is used)
-    (result) => {
-        console.log(result);
-        return result * 2;
-    },
-    // second is for the cases where reject is called
-    (result) => console.log(`error with ${result}`)
-).then(
-    function (result) {
-        console.log(result);
-        return result * 3;
+async function foo() {
+    failure_toggle = ! failure_toggle
+
+    if (failure_toggle) {
+        throw 1 // reject
+    } else {
+        console.log("before waiting")
+        // in case of success, wait for 1 s
+        return await sleep(10, 1000)
     }
-);
+}
 ```
+
+```{code-cell}
+// run this cell several times over
+
+foo()
+ .then(
+    // success
+    (result) => {
+        console.log(result)
+        return result * 2
+    },
+    // failure
+    (result) => console.log(`error with ${result}`))
+  .then(
+    function (result) {
+        console.log(result)
+        return result * 3
+    }
+)
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## see also
+
+for those interested, more details on promises can be found in the rest of [this chapter on javascript.info](https://javascript.info/async) [starting here](https://javascript.info/promise-basics)
