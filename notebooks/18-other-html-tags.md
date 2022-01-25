@@ -127,7 +127,7 @@ out of scope for this course though, as it involves a backend
 ```{code-cell}
 :hide_input: true
 
-tools.sample_from_stem("../samples/sections")
+tools.sample_from_stem("../samples/18-sections")
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

@@ -51,12 +51,12 @@ the sample app is not responsive, you will need to open it in a separate window
 ```{code-cell}
 :hide_input: false
 
-tools.sample_from_stem("../samples/pythagore", {sources_show: false})
+tools.sample_from_stem("../samples/44-pythagore", {sources_show: false})
 ```
 
 +++ {"slideshow": {"slide_type": ""}}
 
-## fibonacci and the golden number 
+## fibonacci and the golden number
 
 you are asked to write a small app as a html+css+js that explores the neighbourhood between fibonacci numbers and the golden number, taking - as loose as you want - inspiration from the page below
 
@@ -68,7 +68,7 @@ here again the sample app is not responsive, you will need to open it in a separ
 :hide_input: false
 
 // the minified version somehow was not working...
-tools.sample_from_stem("../samples/fibonacci", {sources_show: false})
+tools.sample_from_stem("../samples/44-fibonacci", {sources_show: false})
 ```
 
 ## a snake

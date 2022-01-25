@@ -45,7 +45,7 @@ tools.init()
 ```{code-cell}
 :hide_input: true
 
-tools.sample_from_stem("../samples/spinning-wheel", {id: 'finished', sources_show: false})
+tools.sample_from_stem("../samples/43-spinning-wheel/spinning-wheel", {id: 'finished', sources_show: false})
 ```
 
 +++ {"slideshow": {"slide_type": ""}}
@@ -159,7 +159,7 @@ your html part could look like the following
 :hide_input: true
 
 tools.sample_from_stem(
-    '../samples/spinning-wheel', 
+    '../samples/43-spinning-wheel/spinning-wheel',
    {id: 'source-only', css_show: false, js_show: false, output_show: false,})
 ```
 

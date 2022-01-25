@@ -90,7 +90,7 @@ hide_input: true
 slideshow:
   slide_type: slide
 ---
-tools.sample_from_stem("../samples/font-demo")
+tools.sample_from_stem("../samples/15-font-demo")
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -139,7 +139,7 @@ tools.sample_from_stem("../samples/font-demo")
   in particular can be safely scaled / colorized
   using CSS
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": []}
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## Unicode characters
 
@@ -172,7 +172,7 @@ tools.sample_from_strings({
 })
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "split", "tags": []}
++++ {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
 
 ### Unicode - the easy way
 

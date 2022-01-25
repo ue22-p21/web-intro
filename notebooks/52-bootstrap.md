@@ -8,7 +8,7 @@ jupytext:
     extension: .md
     format_name: myst
 kernelspec:
-  display_name: Javascript (Node.js)
+  display_name: JavaScript (Node.js)
   language: javascript
   name: javascript
 nbhosting:
@@ -71,7 +71,7 @@ hide_input: true
 slideshow:
   slide_type: slide
 ---
-tools.sample_from_stem("../samples/bootstrap")
+tools.sample_from_stem("../samples/52-bootstrap", {height: "30em"})
 ```
 
 <p class="rise-footnote">many more effects are available - read the components page !</p>

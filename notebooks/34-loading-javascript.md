@@ -135,11 +135,10 @@ let circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
 +++
 
 <div class="rise-footnote">
-    
+
 in a nutshell, the namespaces are designed to allow for more tags 
 than the default ones (like e.g. &lt;div&gt;)
-  
-    
+
 </div>
 
 ```{code-cell}
@@ -147,7 +146,7 @@ than the default ones (like e.g. &lt;div&gt;)
 slideshow:
   slide_type: slide
 ---
-tools.sample_from_stem("../samples/spinning-wheel/step2", {height: '25em'})
+tools.sample_from_stem("../samples/43-spinning-wheel/step2", {height: '25em'})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

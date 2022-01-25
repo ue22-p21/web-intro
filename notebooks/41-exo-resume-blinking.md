@@ -72,7 +72,7 @@ hide_input: true
 slideshow:
   slide_type: ''
 ---
-tools.sample_from_stem("../samples/resume-blink", {sources_show: false})
+tools.sample_from_stem("../samples/41-resume-blinking", {sources_show: false})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

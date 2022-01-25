@@ -70,7 +70,7 @@ tools.sample_from_strings({'html': 'HELLO'}, {id: 'id1'})
 ```
 
 ```javascript hide_input=false
-// use the options to remove on of the 3
+// use the options to remove one of the 3
 // btw here the html is off so nothing shows up at all
 
 tools.sample_from_strings({html: 'HELLO'}, {id: 'id2', html_show: false})
@@ -155,7 +155,7 @@ undefined
 // the default is separate_show = true
 
 tools.sample_from_stem(
-    "../samples/spinning-wheel", 
+    "../samples/43-spinning-wheel/spinning-wheel", 
     {sources_show: false, height: '300px', separate_label: 'In new window',
 }) 
 ```
@@ -177,7 +177,7 @@ undefined
 // otherwise we mess with the previous sample
 
 tools.sample_from_stem(
-    "../samples/spinning-wheel", 
+    "../samples/43-spinning-wheel/spinning-wheel", 
     {id: 'duplicate', height: '20em', sources_show: false, separate_show: false})
 ```
 
@@ -196,7 +196,7 @@ undefined
 
 ```javascript slideshow={"slide_type": ""} hide_input=false scrolled=false
 tools.sample_from_stem(
-    "../samples/calculator", 
+    "../samples/42-calculator", 
     {sources_show: false, separate_show: false, height: '500px'}) 
 ```
 

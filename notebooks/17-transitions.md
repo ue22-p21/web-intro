@@ -66,7 +66,7 @@ tools.init()
 ```{code-cell}
 :hide_input: false
 
-tools.sample_from_stem("../samples/transition1", {start_with: 'css'})
+tools.sample_from_stem("../samples/17-transition1", {start_with: 'css'})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -119,7 +119,7 @@ hide_input: false
 slideshow:
   slide_type: '-'
 ---
-tools.sample_from_stem("../samples/transition2", {separate_width: '800px'})
+tools.sample_from_stem("../samples/17-transition2", {separate_width: '800px'})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -157,7 +157,7 @@ hide_input: false
 slideshow:
   slide_type: '-'
 ---
-tools.sample_from_stem("../samples/transition3", {start_with: 'js'})
+tools.sample_from_stem("../samples/17-transition3", {start_with: 'js'})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

@@ -8,7 +8,7 @@ jupytext:
     extension: .md
     format_name: myst
 kernelspec:
-  display_name: Javascript (Node.js)
+  display_name: JavaScript (Node.js)
   language: javascript
   name: javascript
 nbhosting:
@@ -40,7 +40,7 @@ tools.init()
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## jQuery is everywhere
+## jQuery used to be everywhere
 
 +++
 
@@ -49,7 +49,7 @@ with the objective to make **common operations**,
 like **interactions with the DOM**   
 much **smoother**, and more **cross-browser**
 
-it is embedded in many applications,  
+it is still embedded in many applications,  
 so it is a **must know** component
 
 +++
@@ -250,7 +250,7 @@ the browser goes and fetches the actual image content and displays it
 ## example 2
 
 ```{code-cell}
-tools.sample_from_stem("../samples/jquery-colors")
+tools.sample_from_stem("../samples/51-jquery-colors")
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

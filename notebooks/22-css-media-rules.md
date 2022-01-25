@@ -195,5 +195,5 @@ remember that `<html>` contains 2 sons, a `<head>` and a `<body>`
 ```{code-cell}
 :hide_input: true
 
-tools.sample_from_stem("../samples/exo-grid", {sources_show: false})
+tools.sample_from_stem("../samples/22-exo-grid", {sources_show: false})
 ```

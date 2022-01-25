@@ -200,5 +200,5 @@ tools.sample_from_strings({html: flex2_html, css: flex2_css}, {id: 'flex2', star
 ```{code-cell}
 :hide_input: true
 
-tools.sample_from_stem("../samples/exo-flex", {sources_show: false})
+tools.sample_from_stem("../samples/23-exo-flex", {sources_show: false})
 ```

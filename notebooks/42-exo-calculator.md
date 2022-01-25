@@ -63,7 +63,7 @@ hide_input: false
 slideshow:
   slide_type: ''
 ---
-tools.sample_from_stem("../samples/calculator", {sources_show: false})
+tools.sample_from_stem("../samples/42-calculator", {sources_show: false})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

@@ -36,7 +36,7 @@ parts:
 - caption: "Practicing JS"
   chapters:
   - file: 40-general-tips
-  - file: 41-exo-cv-blinking
+  - file: 41-exo-resume-blinking
   - file: 42-exo-calculator
   - file: 43-exo-spinning-wheel
   - file: 44-exos-miscell
