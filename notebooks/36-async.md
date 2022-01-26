@@ -137,10 +137,10 @@ new Promise(
             reject(1)
         } else {
             // in case of success, wait for 1 s
-            console.log('YES')
+            console.log('before')
             setTimeout(
                 () => { 
-                    console.log("took some time")
+                    console.log("after 1s")
                     resolve(10)
                 },
             1000)
@@ -175,7 +175,10 @@ with `async` you can declare functions that return a `Promise` by default
 // this code behaves almost like the previous code, except
 // for the 1s delay (which will be in the next version)
 
-async function foo() {
+// it will alternatively
+// fail immediately
+// succeed and return 10 - immediately also for now
+async function foo1() {
     // make it work or fail every other time
     failure_toggle = ! failure_toggle
 
@@ -196,7 +199,7 @@ async function foo() {
 
 // so we can call the function 
 // and use the result as a Promise
-foo()
+foo1()
   .then(
     // first argument to then is in case of success (resolve is used)
     (result) => {
@@ -225,16 +228,19 @@ foo()
 // this version now behaves exactly as the first example
 
 async function sleep(result, milliseconds) {
-  return new Promise(resolve => setTimeout(resolve(result), milliseconds))
+  return new Promise(resolve => setTimeout(() => resolve(result), milliseconds))
 }
 
-async function foo() {
+// will alternatively
+// fail immediately
+// succeed and return 10 after a 1s delay 
+async function foo2() {
     failure_toggle = ! failure_toggle
 
     if (failure_toggle) {
         throw 1 // reject
     } else {
-        console.log("before waiting")
+        console.log("before 1s")
         // in case of success, wait for 1 s
         return await sleep(10, 1000)
     }
@@ -244,7 +250,7 @@ async function foo() {
 ```{code-cell}
 // run this cell several times over
 
-foo()
+foo2()
  .then(
     // success
     (result) => {
@@ -255,7 +261,7 @@ foo()
     (result) => console.log(`error with ${result}`))
   .then(
     function (result) {
-        console.log(result)
+        console.log('after')
         return result * 3
     }
 )
