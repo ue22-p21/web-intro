@@ -12,7 +12,7 @@ kernelspec:
   language: javascript
   name: javascript
 nbhosting:
-  title: HTTP requests
+  title: fetch() & HTTP requests
 rise:
   autolaunch: true
   slideNumber: c/t
@@ -87,7 +87,7 @@ namely `https://xkcd.now.sh`
 
 this is due to a change in 2018, about more stringent security, that was not ported back to the original API endpoint
     
-</div>    
+</div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

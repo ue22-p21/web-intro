@@ -33,7 +33,7 @@ parts:
   - file: 34-loading-javascript
   - file: 35-events-and-callbacks
   - file: 36-async
-  - file: 37-httprequest
+  - file: 37-fetch
 - caption: "Practicing JS"
   chapters:
   - file: 40-general-tips
