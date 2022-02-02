@@ -58,3 +58,9 @@ div.cell.text_cell .prompt.input_prompt {
     line-height: 1;
     margin: 0px 0px 0px 50px;
 }
+
+.rise-midsize {
+    font-size: normal;
+    line-height: 1;
+    margin: 3px;
+}

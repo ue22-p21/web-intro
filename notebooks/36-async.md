@@ -269,6 +269,55 @@ foo2()
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+## chaining
+
++++
+
+with this model, we can now avoid the pyramid of doom, using chaining
+
+```{code-cell}
+:cell_style: split
+
+// which means that this code
+//  (not runnable of course)
+
+// doSomething(function(result) {
+//   doSomethingElse(result, function(newResult) {
+//     doThirdThing(newResult, function(finalResult) {
+//       console.log(`final result ${finalResult}`)
+//     }, failureCallback)
+//   }, failureCallback)
+// }, failureCallback)
+```
+
+```{code-cell}
+:cell_style: split
+
+// becomes this
+
+// doSomething()
+// .then(function(result) {
+//   return doSomethingElse(result)
+// })
+// .then(function(newResult) {
+//   return doThirdThing(newResult)
+// })
+// .then(function(finalResult) {
+//   console.log(`final result ${finalResult}`)
+// })
+// .catch(failureCallback)
+```
+
+observe that the chained form is linear, which reflects the actual workflow here
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## see also
 
 for those interested, more details on promises can be found in the rest of [this chapter on javascript.info](https://javascript.info/async) [starting here](https://javascript.info/promise-basics)
+
+also [this article on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) can come in handy
+
++++
+
+***
