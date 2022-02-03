@@ -51,7 +51,8 @@ the sample app is not responsive, you will need to open it in a separate window
 ```{code-cell}
 :hide_input: true
 
-tools.sample_from_stem("../samples/44-pythagore", {sources_show: false})
+tools.sample_from_stem("../samples/44-pythagore", 
+                       {sources_show: false, separate_height: '1000px', separate_width: '800px'})
 ```
 
 +++ {"slideshow": {"slide_type": ""}}
