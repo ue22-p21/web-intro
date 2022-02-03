@@ -143,7 +143,7 @@ setInterval(foo, 3000); // call foo every 3000 ms
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## anonymous function (a.k.a *lambda*)
+## anonymous function (a.k.a *arrow functions*)
 
 due to the extensive use of callbacks in JavaScript, having to name every function is annoying  
 for this reason, JavaScript has 2 convenient ways to create anonymous functions:
@@ -151,12 +151,12 @@ for this reason, JavaScript has 2 convenient ways to create anonymous functions:
 * the legacy one:
 
 ```javascript
-let mylambda0 = function (arg0, arg1) { /* some code here */ };
+const mylambda0 = function (arg0, arg1) { /* some code here */ }
 ```
 * the modern one:
 
 ```javascript
-let mylambda0 = (arg0, arg1) => { /* some code here */ };
+const mylambda0 = (arg0, arg1) => { /* some code here */ }
 ```
 * /!\ Both variants are valid, even if the new one looks nicer
 * also, there are subtle differences, not covered here
@@ -192,32 +192,35 @@ tools.sample_from_stem("../samples/35-async-02-events",
 
 +++
 
-* it is rather frequent that a callback needs to access data that sits outside of the function context
+* it is rather frequent that a callback needs to access data that sits **outside of the function context**
 * it is safe to use lexically-bound variables inside the callback
 * see the `context` variable in the example below
 
 ```{code-cell}
 // here the 'context' variable is not visible
+
 { 
-    let context = {a:1, b:2};
-    setTimeout( 
-        function() {
-            // Here the 'context' variable is visible and remain valid
-            // even if we leave the block
-            console.log("context is", context);
-        },
-        2000);
-    console.log("NOW timeout armed");
+  let context = {a:1, b:2};
+  setTimeout( 
+    function() {
+      // here the 'context' variable is visible and remain valid
+      // even if we leave the block
+      console.log("context is", context);
+    },
+    2000);
+  console.log("NOW timeout armed");
 } 
-// here neither
+
+// here neither, let us prove it:
+
 try {
-    context
+  context
 } catch(err) {
-    console.log(`OOPS ${err.message}`)
+  console.log(`OOPS ${err.message}`)
 }
 
-// wait for 2s to see that 
-// the callback still triggers properly
+// BUT: wait for 2s and see the callback still triggers properly
+// it means that the 'context' variable is still alive 
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -262,3 +265,51 @@ so far we have seen a few types of events (e.g. `load`, `keydown`, `click`)
 
 * for more details and a more exhaustive list of available events  
   see [this section in javascript.info](https://javascript.info/event-details)
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## `let` *vs* `var`
+
++++
+
+* take home message is: **never use `var` declarations**
+* it is old-fashioned and **badly broken**
+* see below
+  * example with `var` in effect creates a global `i`
+  * whille the one with `let` behaves as expected
+
+```{code-cell}
+:cell_style: split
+
+function ko() {
+  // DO NOT USE var IN YOUR CODE !
+  for (var i=1; i<=3; i++) {
+     setTimeout(() => console.log("ko", i), 
+                100*i)
+    }
+}
+
+ko()
+```
+
+```{code-cell}
+:cell_style: split
+
+function ok() {
+  // use let instead
+  for (let i=1; i<=3; i++) {
+     setTimeout(() => console.log("ok", i),
+                100*i)
+    }
+}
+
+ok()
+```
+
+## see also
+
+* thorough article on closures https://javascript.info/closure
+
++++
+
+***
