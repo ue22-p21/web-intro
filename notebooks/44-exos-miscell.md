@@ -69,7 +69,8 @@ here again the sample app is not responsive, you will need to open it in a separ
 :hide_input: true
 
 // the minified version somehow was not working...
-tools.sample_from_stem("../samples/44-fibonacci", {sources_show: false})
+tools.sample_from_stem("../samples/44-fibonacci", 
+                       {sources_show: false, separate_height: '1000px', separate_width: '900px'})
 ```
 
 ## a snake
