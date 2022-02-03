@@ -143,6 +143,7 @@ than the default ones (like e.g. &lt;div&gt;)
 
 ```{code-cell}
 ---
+hide_input: true
 slideshow:
   slide_type: slide
 ---

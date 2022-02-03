@@ -93,7 +93,7 @@ here corresponding to the end of the page load
 ### events example
 
 ```{code-cell}
-:hide_input: false
+:hide_input: true
 
 tools.sample_from_stem("../samples/35-async-01-events",
                        {separate_show: true, width: '40em', start_with: 'js'})
@@ -180,7 +180,7 @@ window.addEventListener(
 ## previous example using arrow functions
 
 ```{code-cell}
-:hide_input: false
+:hide_input: true
 
 tools.sample_from_stem("../samples/35-async-02-events",
                        {separate_show: true, width: '40em', start_with: 'js'})

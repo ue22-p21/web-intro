@@ -64,7 +64,7 @@ tools.init()
 ## transition example 1
 
 ```{code-cell}
-:hide_input: false
+:hide_input: true
 
 tools.sample_from_stem("../samples/17-transition1", {start_with: 'css'})
 ```
@@ -73,7 +73,7 @@ tools.sample_from_stem("../samples/17-transition1", {start_with: 'css'})
 
 ### how transitions work
 
-+++ {"tags": []}
++++
 
 * you need to define a `transition` property on the element
 * e.g. the `<section>` element has  
@@ -115,7 +115,7 @@ tools.sample_from_stem("../samples/17-transition1", {start_with: 'css'})
 
 ```{code-cell}
 ---
-hide_input: false
+hide_input: true
 slideshow:
   slide_type: '-'
 ---
@@ -153,7 +153,7 @@ with e.g. `growing.style.width = '200px'`
 
 ```{code-cell}
 ---
-hide_input: false
+hide_input: true
 slideshow:
   slide_type: '-'
 ---

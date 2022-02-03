@@ -250,6 +250,8 @@ the browser goes and fetches the actual image content and displays it
 ## example 2
 
 ```{code-cell}
+:hide_input: true
+
 tools.sample_from_stem("../samples/51-jquery-colors")
 ```
 

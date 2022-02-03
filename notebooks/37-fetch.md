@@ -32,6 +32,8 @@ rise:
 
 # networking in JavaScript
 
+or: how to use the backend from JS - or another backend for that matter 
+
 ```{code-cell}
 delete require.cache[require.resolve('../js/toolsv3')]
 tools = require('../js/toolsv3')

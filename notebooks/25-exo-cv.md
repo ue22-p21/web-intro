@@ -62,7 +62,7 @@ tools.init()
 
 ```{code-cell}
 ---
-hide_input: false
+hide_input: true
 slideshow:
   slide_type: slide
 ---

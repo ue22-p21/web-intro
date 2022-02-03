@@ -98,7 +98,7 @@ matches all `<p>` elements that are an **immediate child** of `<div>` element
 a first, not-quite-working example (at least on Chrome)
 
 ```{code-cell}
-:hide_input: false
+:hide_input: true
 
 hover1_html = `<div id="part1">
   <a href="https://nbhosting.inria.fr" target="_">
@@ -136,7 +136,7 @@ to get it right, we can use the other pseudo-class `:link`
 that is set only on `<a>` tags that have a `href=` attribute
 
 ```{code-cell}
-:hide_input: false
+:hide_input: true
 
 hover2_html = `<div id="part1">
   <a href="https://nbhosting.inria.fr" target="_">
@@ -187,7 +187,7 @@ note that here we build a selector that applies on elements that have <b>both</b
 ### `nth-child() example`
 
 ```{code-cell}
-:hide_input: false
+:hide_input: true
 
 rank_html = `<ul>
   <li>the first bullet</li>

@@ -92,12 +92,12 @@ you can find a cheatsheet that summarizes most of this
 * from within this notebook: eval next cell
 
 ```{code-cell}
+:hide_input: true
+
 delete require.cache[require.resolve('../js/toolsv3')]
 tools = require('../js/toolsv3')
 tools.sample_from_stem("../cheatsheet/cheatsheet",
                       {width: '10em', height: '10em'})
 ```
 
-```{code-cell}
-
-```
+***
