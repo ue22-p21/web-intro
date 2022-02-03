@@ -66,8 +66,8 @@ rise:
 :cell_style: split
 
 // strings with ' or "
-let s1 = "abc" + 'def';
-let s2 = 'ab' + "cdef";
+let s1 = "abc" + 'def'
+let s2 = 'ab' + "cdef"
 s1 == s2
 ```
 
@@ -145,7 +145,7 @@ if ( ! false) console.log("not is ! ")
 
 * very much alike in Python
 * note about **formatting**
-  * the equivalent of *f-strings* is built with `${}` inside backticks (`)
+  * the equivalent of *f-strings* is <i>&#96;built with `${}` inside backticks&#96;</i>
 
 ```{code-cell}
 x = 10
@@ -271,34 +271,58 @@ console.log(array.indexOf("absent"))
 
 +++ {"cell_style": "split"}
 
-* it posible to iterate through an array like Python:
+* it is possible to iterate through an array like in Python:
 
 ```{code-cell}
 :cell_style: split
 
 for (let x of array1) {
-    console.log(x);
+    console.log(x)
 }
 ```
 
-* but be carefull of use `of` instead of `in` to iterrate each value
+* but make sure to use `for .. of` instead of `for .. in` to iterate over each **value**  
+  we will see the `for .. in` construction below
 * also notice how to use `let` to define a variable **local** to the `for` loop
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### iterating using indices, aka. `enumerate` in python
 
-+++
++++ {"cell_style": "split"}
 
-* Using `in` keyword iterate through indices:
+* using `in` keyword iterate through indices:
 
 ```{code-cell}
 :cell_style: split
 
 for (let i in array) {
-    console.log(i);
+    console.log(i)
 }
 ```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### beware about `for .. in`
+
++++
+
+**WARNING** this is an oversimplification  
+with some data structures, `for (x in obj)` will iterate over more than the natural indices
+
+in fact, the indexes that `for .. in` will iterate over are *strings* !  
+which is, well, insane...
+
+```{code-cell}
+tab = [10, 20]
+
+for (i in tab)
+    console.log(`value=${i} type=${typeof i}`)
+```
+
+a notable example is e.g. when iterating over the result of `element.querySelectorAll()`  
+that we'll see in the next chapter, but it's worth outlining this already  
+(and see the cheatsheet also)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -306,12 +330,12 @@ for (let i in array) {
 
 +++
 
-* as you expect there are many more methods available, like  
+* as you expect, there are many more methods available, like  
   `.sort()`, `.reverse()`  
   `.join()`, `.slice()`, `.splice()`,  
   `.shift()`, `.unshift()` 
 
-* for more details see on *javascript.info*
+* for more details, see on *javascript.info*
   * [this article on Arrays](https://javascript.info/array)
   * and [this one on related methods](https://javascript.info/array-methods)
 
@@ -327,7 +351,7 @@ for (let i in array) {
 ```{code-cell}
 :cell_style: split
 
-let ref1 = [["shared", "data"], "unshared"];
+let ref1 = [["shared", "data"], "unshared"]
 ref1 
 ```
 
@@ -336,7 +360,7 @@ ref1
 
 // slice() works like Python's [:]
 // so it's a shallow copy
-let ref2 = ref1.slice();
+let ref2 = ref1.slice()
 ref2
 ```
 
@@ -378,10 +402,10 @@ ref1
 ```{code-cell}
 :cell_style: split
 
-let map = new Map();
+let map = new Map()
 
-map.set('key1', 'value1');
-map.set(1000, 'value1000');
+map.set('key1', 'value1')
+map.set(1000, 'value1000')
 
 map.get(1000)
 ```
@@ -420,7 +444,7 @@ let bond = {
     last_name: "Bond",
 }
 
-console.log(`my name is ${bond.last_name}`);
+console.log(`my name is ${bond.last_name}`)
 ```
 
 ```{code-cell}
@@ -449,7 +473,7 @@ console.log(`my name is ${bond.last_name}`);
 
 ```{code-cell}
 // so we can use this to iterate over an object's contents
-for (key in bond) {
+for (let key in bond) {
     console.log(key, ':', bond[key])
 }
 ```
@@ -463,7 +487,7 @@ for (key in bond) {
 reminder : we had already seen array-based assignment which is a Python-style idiom
 
 ```{code-cell}
-let [a1, a2] = [100, 200];
+let [a1, a2] = [100, 200]
 
 `a1 now is ${a1}, a2 is ${a2}`
 ```
@@ -471,13 +495,20 @@ let [a1, a2] = [100, 200];
 there a similar destructuring assignement on objects
 
 ```{code-cell}
-let example_obj = {name: "doe", 
-                   phone: '0123456',
-                   other: 'some stuff'};
+function demo() {
+    let example_obj = {name: "doe", 
+                       phone: '0123456',
+                       other: 'some stuff'}
 
-let {name, phone} = {...example_obj};
+    // extract only a subset of the object
+    // and assign them into variables 
+    // with the same names
+    let {name, phone} = example_obj
 
-`variable name now is ${name}, phone is ${phone}`
+    console.log(`variable name now is ${name}, phone is ${phone}`)
+}
+
+demo()
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -487,8 +518,8 @@ let {name, phone} = {...example_obj};
 ```{code-cell}
 class Person {
     constructor(first, last) {
-        this.first_name = first;
-        this.last_name = last;
+        this.first_name = first
+        this.last_name = last
     }
 }
 
@@ -517,11 +548,11 @@ typeof(person)
 
 // on an array
 function side_effect(arg) {
-    arg[1] *= 1000;
+    arg[1] *= 1000
 }
 
-let list = [0, 1, 2];
-side_effect(list);
+let list = [0, 1, 2]
+side_effect(list)
 list
 ```
 
@@ -530,7 +561,7 @@ list
 
 // same with objects
 function change_object(obj) {
-    obj.first_name = 'BOOM';
+    obj.first_name = 'BOOM'
 }
 
 let person2 = new Person('John Doe')
@@ -545,7 +576,7 @@ person2
 ```{code-cell}
 // just display arguments
 function foo(x, y, z) {
-    console.log(`x=${x}, y=${y}, z=${z}`);
+    console.log(`x=${x}, y=${y}, z=${z}`)
 }
 ```
 
@@ -584,11 +615,11 @@ foo(1, 2, 3, 4)
 
 function bar(x, y, ...arguments) {
     // display what we receive
-    console.log(`x=${x}, y=${y}`);
-    console.log(`arguments=${arguments}`);
+    console.log(`x=${x}, y=${y}`)
+    console.log(`arguments=${arguments}`)
     // the arguments object can be iterated on
     for (let arg of arguments) {
-        console.log(arg);
+        console.log(arg)
     }
 }
 
