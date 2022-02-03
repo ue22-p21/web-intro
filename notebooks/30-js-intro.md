@@ -338,3 +338,14 @@ as far as Web frontend, JavaScript :
 * **full-fledged** modern language, with objects, classes, modules…
 * Some globals are specific to web pages in the browser such as `document`, `window`, `console`
 * highly influenced by **asynchronicity** / reactive programming
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## see also: JS *vs* Python
+
+an interesting summary of the  
+*similarities* and *differences*  
+between *JavaScript* and *Python*  
+can be found here
+
+https://observablehq.com/@ballingt/javascript-for-python-programmers
