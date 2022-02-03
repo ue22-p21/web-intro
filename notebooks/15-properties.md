@@ -271,7 +271,7 @@ box1_css = `p.box1 {
     border-bottom-style: solid;
 }`
 
-tools.sample_from_strings({html: box1_html, css: box1_css}, start_with: 'css')
+tools.sample_from_strings({html: box1_html, css: box1_css}, { start_with: 'css' })
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -311,7 +311,7 @@ box2_css = `p.box2 {
     border-top-left-radius: 5px;
 }`
 
-tools.sample_from_strings({html: box2_html, css: box2_css}, start_with: 'css')
+tools.sample_from_strings({html: box2_html, css: box2_css}, { start_with: 'css' })
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
