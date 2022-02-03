@@ -43,6 +43,20 @@ rise:
 * containers : arrays (lists), maps (dicts) and sets
 * objects
 
++++
+
+<div class="rise-footnote">
+
+**NOTE** on using **notebooks**  
+as mentioned, all variables should be declared with either `let` or `const`  
+however, in a notebook this is inconvenient because one **cannot declare** the **same variable twice** in the same scope  
+and so using `let` would prevent us from re-evaluating the same cell twice  
+in order to remind you of the necessity to declare everything  
+we will add commented-out `/*let*/` chunks when using a new variable    
+   
+    
+</div>
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## atomic types
@@ -93,7 +107,7 @@ s1 == s2
 :cell_style: split
 
 // in anticipation
-object = { x: 10, y: 20}
+/*let*/ object = { x: 10, y: 20}
 
 // this in Python would 
 // trigger an exception
@@ -148,8 +162,8 @@ if ( ! false) console.log("not is ! ")
   * the equivalent of *f-strings* is <i>&#96;built with `${}` inside backticks&#96;</i>
 
 ```{code-cell}
-x = 10
-s = `format expression like ${x*x} in a string`
+/*let*/ x = 10
+/*let*/ s = `format expression like ${x*x} in a string`
 s
 ```
 
@@ -184,11 +198,11 @@ for a deeper study :
 :cell_style: split
 
 // arrays can be heterogeous
-let array1 = [1, "two"]
+/*let*/ array1 = [1, "two"]
 
 // you can also create an
 // empty instance explicitly
-let array2 = new Array()
+/*let*/ array2 = new Array()
 ```
 
 ```{code-cell}
@@ -216,7 +230,7 @@ array2.pop()
 :cell_style: split
 
 // use the concat method
-let array = array1.concat(array2)
+/*let*/ array = array1.concat(array2)
 array
 ```
 
@@ -314,9 +328,9 @@ in fact, the indexes that `for .. in` will iterate over are *strings* !
 which is, well, insane...
 
 ```{code-cell}
-tab = [10, 20]
+/*let*/ tab = [10, 20]
 
-for (i in tab)
+for (let i in tab)
     console.log(`value=${i} type=${typeof i}`)
 ```
 
@@ -351,7 +365,7 @@ that we'll see in the next chapter, but it's worth outlining this already
 ```{code-cell}
 :cell_style: split
 
-let ref1 = [["shared", "data"], "unshared"]
+/*let*/ ref1 = [["shared", "data"], "unshared"]
 ref1 
 ```
 
@@ -360,7 +374,7 @@ ref1
 
 // slice() works like Python's [:]
 // so it's a shallow copy
-let ref2 = ref1.slice()
+/*let*/ ref2 = ref1.slice()
 ref2
 ```
 
@@ -402,7 +416,7 @@ ref1
 ```{code-cell}
 :cell_style: split
 
-let map = new Map()
+/*let*/ map = new Map()
 
 map.set('key1', 'value1')
 map.set(1000, 'value1000')
@@ -439,7 +453,7 @@ for (let k of map.keys()) {
 ```{code-cell}
 :cell_style: split
 
-let bond = {
+/*let*/ bond = {
     first_name: "James",
     last_name: "Bond",
 }
@@ -457,6 +471,73 @@ console.log(`my name is ${bond.last_name}`)
 <p class="rise-footnote"> 
     the syntax for JavaScript objects, as well as the <i>key/value</i> vocabulary make them <b>look like</b> Python dictionaries, <b>do not get confused though</b>, JavaScript objects are much more like Python class instances.
 </p>
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+**more examples**
+
+```{code-cell}
+:cell_style: split
+
+// how to write an object's keys
+
+// note that the values MUST BE
+// valid JS expressions
+
+/*let*/ options = { 
+    // quotes are not needed in the key
+    // if it looks like a variable
+    margin_left: '10px',
+    // but it's allowed to put them
+    'margin_right': '20px',
+    // and required if the key is odd
+    // here with a space inside
+    // can be any string
+    'margin space': true,
+}
+```
+
+```{code-cell}
+:cell_style: split
+
+/*let*/ x = 10
+
+/*let*/ options2 = {
+    // and, oddity, just this
+    x,
+    // replaces x: x
+    y: 20,
+    z: 30
+}
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+**more examples (2)**
+
+```{code-cell}
+:cell_style: split
+
+// how to concatenate objects
+
+/*let*/ options2 = {
+    margin_top: '30px',
+    // that's how objects can be concatenated
+    ...options,
+    ...options2
+}
+```
+
+```{code-cell}
+:cell_style: split
+
+// how to shallow-copy
+
+/*let*/ copy = {...options}
+copy.add = 'more'
+
+copy
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -487,6 +568,8 @@ for (let key in bond) {
 reminder : we had already seen array-based assignment which is a Python-style idiom
 
 ```{code-cell}
+// here let is mandatory
+
 let [a1, a2] = [100, 200]
 
 `a1 now is ${a1}, a2 is ${a2}`
@@ -523,7 +606,7 @@ class Person {
     }
 }
 
-let person = new Person("John", "Doe")
+/*let*/ person = new Person("John", "Doe")
 
 typeof(person)
 ```
@@ -551,7 +634,7 @@ function side_effect(arg) {
     arg[1] *= 1000
 }
 
-let list = [0, 1, 2]
+/*let*/ list = [0, 1, 2]
 side_effect(list)
 list
 ```
@@ -564,7 +647,7 @@ function change_object(obj) {
     obj.first_name = 'BOOM'
 }
 
-let person2 = new Person('John Doe')
+/*let*/ person2 = new Person('John Doe')
 change_object(person2)
 person2
 ```
@@ -633,13 +716,17 @@ slideshow:
   slide_type: slide
 ---
 // and the other way around
+// with the so-called spread operator
 
 function foo(x, y, z) {
-    console.log(`x=${x} y=${y} z=${z}`)
+    // just to illustrate the mapping
+    console.log({x, y, z})
 }
 
 L = [1, 2, 3]
 
 // just like foo(*L) in Python
+//   (remember we've seen the same 
+//    construction with objects earlier too)
 foo(...L)
 ```
