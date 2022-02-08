@@ -66,7 +66,7 @@ hide_input: true
 slideshow:
   slide_type: slide
 ---
-tools.sample_from_stem("../samples/25-monarque/resume", {sources_show: false})
+tools.sample_from_stem("../samples/26-monarque/resume", {sources_show: false})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -77,7 +77,7 @@ tools.sample_from_stem("../samples/25-monarque/resume", {sources_show: false})
   in the git repo
   https://github.com/ue22-p21/web-intro
 
-* specifically in the `samples/25-monarque` folder
+* specifically in the `samples/26-monarque` folder
 
 * note that some of the other examples of the course  
   can be found in the `samples/` folder
