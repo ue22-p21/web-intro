@@ -78,6 +78,85 @@ matches all `<p>` elements that are an **immediate child** of `<div>` element
     here the <code>div</code> and the <code>p</code> parts are selectors themselves, they can be any more specific selector, of course
 </p>
 
+```{code-cell}
+---
+hide_input: true
+slideshow:
+  slide_type: slide
+---
+under_html = `<div>
+  <span>
+    <p> at level 2 under div </p>
+  </span>
+  <p> immediately under div </p>
+</div>
+`
+
+under_css = `/* a <p> anywhere under <div> */
+div p {
+   color: red;
+}
+
+/* a <p> immediately under <div> */
+div > p {
+   color: blue;
+}
+`
+
+tools.sample_from_strings({html: under_html, css: under_css}, {start_with: 'css'})
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## selecting X as a sibling of Y
+
++++ {"slideshow": {"slide_type": ""}}
+
+`div + p`  
+matches all `<p>` elements that are **immediate right sibling** of a `<div>` element
+
+`div ~ p`  
+matches all `<p>` elements that are **some right sibling** of a `<div>` element
+
++++
+
+<p class="rise-footnote">
+    two elements are siblings iff they have the same parent
+</p>
+
+```{code-cell}
+---
+hide_input: true
+slideshow:
+  slide_type: slide
+---
+sibling_html = `<div>
+  <p>paragraph 1</p>
+  <div>
+    <p>child paragraph</p>
+  </div>
+  <p>paragraph 2</p>
+  <p>paragraph 3</p>
+</div>
+`
+
+sibling_css = `
+/* siblings must have the same parent */
+
+/* all <p> immediately after a <div> */
+div + p {
+  color: red;
+}
+
+/* all <p> somewhere after a <div> */
+div ~ p {
+  background-color: #ddd;
+}
+`
+
+tools.sample_from_strings({html: sibling_html, css: sibling_css}, {start_with: 'css', id: 'sibling'})
+```
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## pseudo-class selectors
@@ -103,15 +182,15 @@ a first, not-quite-working example (at least on Chrome)
 hover1_html = `<div id="part1">
   <a href="https://nbhosting.inria.fr" target="_">
 a regular link is unsensitive to hovering</a>
-</div> 
+</div>
 
 <div class="part2">
   <a href="https://nbhosting.inria.fr" target="_">
-     this one reacts if you hover mouse here</a>  
+     this one reacts if you hover mouse here</a>
   <br>
   <a name="nbhosting">
      this is an anchor tag,
-     it reacts to mouse presence 
+     it reacts to mouse presence
      (at least on Chrome), that is not what we want</a>
 </div>`
 
@@ -132,7 +211,7 @@ tools.sample_from_strings({html: hover1_html, css: hover1_css}, {start_with: 'cs
 
 +++
 
-to get it right, we can use the other pseudo-class `:link`    
+to get it right, we can use the other pseudo-class `:link`  
 that is set only on `<a>` tags that have a `href=` attribute
 
 ```{code-cell}
@@ -141,18 +220,18 @@ that is set only on `<a>` tags that have a `href=` attribute
 hover2_html = `<div id="part1">
   <a href="https://nbhosting.inria.fr" target="_">
      a regular link</a>
-</div> 
+</div>
 
 <div class="part2">
   <a href="https://nbhosting.inria.fr" target="_">
      hover mouse here</a>
   <br>
-  <a name="nbhosting">now this anchor tag 
+  <a name="nbhosting">now this anchor tag
      is excluded from the CSS selector, so it behaves
      as expected</a>
 </div>`
 
-hover2_css = `/* <a> elements under a .part2 
+hover2_css = `/* <a> elements under a .part2
    and that have both pseudo-classes */
 .part2 a:hover:link {
     font-size: 300%;
@@ -166,7 +245,7 @@ a {
 tools.sample_from_strings({html: hover2_html, css: hover2_css}, {start_with: 'css'})
 ```
 
-<p class="rise-footnote"> 
+<p class="rise-footnote">
 note that here we build a selector that applies on elements that have <b>both</b> pseudo classes, much like with regular classes
 </p>
 
@@ -235,6 +314,6 @@ tools.sample_from_strings({html: rank_html, css: rank_css}, {start_with: 'css'})
 * [read more on this here](https://css-tricks.com/almanac/selectors/a/attribute/)
 
 <div class="rise-footnote">
-    of course this technique applies to any attribute, 
+    of course this technique applies to any attribute,
     not just <code>href=</code>
 </div>
