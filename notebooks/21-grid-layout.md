@@ -231,7 +231,7 @@ in the previous examples :
 * it is also possible - although less often needed  
   to fix a height globally and arrange the rows accordingly
 * only change is to add on the grid:
-  * `height: 100%` to say we want to use all available space
+  * `height: 100vh` to say we want to use all viewport height
   * `grid-template-rows: 50px 1fr 100px;`  
     which specifies how to use vertical space
 
@@ -255,7 +255,7 @@ grid3_css = `.container {
     "main main . sidebar"
     "footer footer footer footer";
   grid-template-rows: 50px 1fr 100px;
-  height: 100%;
+  height: 100vh;
 }
 
 .item-a {
