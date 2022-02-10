@@ -107,3 +107,11 @@ assuming your github is `myid`
 * simply push changes to have them published
 
 see <https://pages.github.com/> for details
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## another example
+
+see a **much more** elaborated example below ;)
+
+http://www.rleonardi.com/interactive-resume/

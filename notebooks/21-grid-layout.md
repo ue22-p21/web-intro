@@ -303,7 +303,7 @@ tools.sample_from_strings({html: grid3_html, css: grid3_css}, {start_with: 'css'
 
 <div class="rise-footnote">
 
-you may also [complete this game ](https://cssgridgarden.com/) at home if you feel like it
+you may also complete this game  <https://cssgridgarden.com/> at home if you feel like it
             
 </div>
 
