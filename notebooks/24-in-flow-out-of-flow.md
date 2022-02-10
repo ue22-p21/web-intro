@@ -123,6 +123,9 @@ tools.sample_from_strings({html: fixed_html, css: fixed_css},
   we want the 120px to be for the **full height** (padding + border included) of the header 
 * also note the `rgba()` function to define colors with a level of transparency  
   0: totally transparent, 1: totally opaque
+* we could have avoided the duplication of that `120px` thing
+  using CSS so-called *custom properties* (aka variables)  
+  but more on this later...
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
