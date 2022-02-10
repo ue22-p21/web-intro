@@ -61,30 +61,31 @@ as per [this article on w3schools](https://www.w3schools.com/cssref/css3_pr_medi
 ```{code-cell}
 :hide_input: true
 
-threshold = '500px';
+threshold = '500px'
+
 media_width_html = `<body>Click above to open
 in a separate window, turn on
 devel tools to see the window size, and resize
 the window so the width becomes smaller
 or larger than ${threshold}
 <br><b>NOTE:</b> make sure your zoom factor is 100%
-</body>`;
-media_width_css = `/* beware that this rule MUST COME FIRST */
+</body>`
 
-body {
+media_width_css = `body {
     background-color: #fae3d9; /* light pink */
 }
 
 /* applies if the browser window width
-   is less than ${threshold} */
+   is less than 500px */
 
-@media only screen and (max-width: ${threshold}) {
+@media only screen and (max-width: 500px) {
+  /* here we use a rule MORE SPECIFIC than above */
   html>body {
     background-color: #bbded6; /* light green */
   }
-}
-`;
-tools.sample_from_strings({html: media_width_html, css: media_width_css})
+}`
+
+tools.sample_from_strings({html: media_width_html, css: media_width_css}, {start_with: 'css'})
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -93,26 +94,16 @@ tools.sample_from_strings({html: media_width_html, css: media_width_css})
 
 +++
 
-* in this first example
-  * note that the default `body` rule **MUST COME FIRST**
+* in this first example, note that
+  * either the default `body` rule **must come first**
+  * or the second rule must be **more specific**
 * the reason is that when the `@media` rule applies
-  * the browser sees **TWO RULES** with the **same specificity**
-  * as **both selectors**  simply read `body`
-  * and in that case the last one wins
-* so **order is important**
-
-+++
-
-<div class="rise-footnote">
-
-of course one other way about that is to    
-
-* implement a trick to make media rules more specific
-* e.g. artificially add a `media` class
-* and use it in media-specific rules
-* but that is awkward and doesn't scale well...
-    
-</div>
+  * the browser sees **TWO RULES** for `body`
+  * and if they have the **same specificity**
+  * then the last one wins
+* so it is a good practice to use  
+  more specific rules in a media clause  
+  hence our `html>body` (for instance)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
