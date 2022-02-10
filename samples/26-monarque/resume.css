@@ -98,12 +98,11 @@ div#photo {
 }
 
 #header {
-    font-size: 160%;
-    text-align: right;
-    padding: 16px 8% 16px 0px;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    flex-direction: row-reverse;
+    font-size: 160%;
+    padding: 16px 8% 16px 0px;
 }
 
 #header>span {
