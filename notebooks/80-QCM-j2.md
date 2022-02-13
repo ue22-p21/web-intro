@@ -35,11 +35,11 @@ rise:
 1. Un navigateur
 1. Un front-end
 1. Un client
-1. Le Diable
+1. Les trois réponses ci-dessus
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Ou sont aujourd'hui hébergés la plupart des serveurs Internet des sites grand-public?
+## Où sont aujourd'hui hébergés la plupart des serveurs Internet des sites grand-public?
 
 +++
 
@@ -57,7 +57,7 @@ rise:
 1. Bout-en-bout
 1. Pas-à-pas
 1. Pair-à-pair
-1. D'égal-à-égal
+1. Les trois réponses ci-dessus
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -76,30 +76,34 @@ rise:
 
 +++
 
-1. Contenu <-> CSS, Présentation <-> HTML, Comportement <-> Javascript
-1. Contenu <-> Javascript, Présentation <-> CSS, Comportement <-> HTML
-1. Contenu <-> HTML, Présentation <-> CSS, Comportement <-> Javascript
+| - | Contenu | Présentation | Comportement |
+| --- | --- | --- | --- |
+| 1. | CSS | HTML| Javascript |
+| 2. | HTML | CSS | Javascript |
+| 3. | HTML | Javascript | CSS |
+| 4. | Javascript| CSS | HTML |
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Qu'est-ce que le DOM
+## Qu'est-ce qu'un DOM
 
 +++
 
 1. Les Départements d'Outre-Mer
 1. Le Document Object Model
 1. Les tags du document HTML sous forme d'arborescence
+1. Les trois réponses ci-dessus
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Quels tags seront toujours présents dans un document HTML ?
+## Quels tags seront obligatoirement présents dans un document HTML ?
 
 +++
 
-1. html
-1. head
-1. body
-1. link
+1. `<html>`
+1. `<head>`
+1. `<body>`
+1. `<link>`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -107,77 +111,95 @@ rise:
 
 +++
 
-1. des &lt;br&gt;
-1. des &lt;h2&gt;
-1. des &lt;ul&gt;
-1. des &lt;b&gt;
+1. des `<br>`;
+1. des `<h2>`;
+1. des [`<ul>`](https://stackoverflow.com/questions/5681481/should-ol-ul-be-inside-p-or-outside#answer-5681796)
+1. des `<b>`;
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Dans le code suivant, qu'est-ce que *href* par rapport au *a* : &lt;a&nbsp;href="https://www.inria.fr"&gt;Aller&nbsp;à&nbsp;l'INRIA&lt;/a&gt;&nbsp;?
+## Dans `<a href="https://www.inria.fr">Aller à l'INRIA</a>`, qu'est-ce que `href` par rapport au `a` ?
 
 +++
 
 1. href est un attribut du tag a
 1. href est le contenu du tag a
 1. href est le tag de l'attribut a
+1. Aucune des réponses précédentes
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Comment un sélecteur CSS peut-il cibler l'élément ayant l'id "id-unique" ?
+## Parmi les pratiques suivantes, laquelle devriez-vous chercher à appliquer en CSS ?
 
 +++
 
-1. #id-unique { ...
-1. .id-unique { ...
-1. id-unique { ...
+1. Préférer `<b>` à `<strong>`
+1. Donner des noms aux classes qui décrivent comment leur contenu s'affiche
+1. Donner des noms aux classes qui réprésentent ce que leur contenu est
+1. L'existence précède l'essence
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Comment un sélecteur CSS peut-il cibler tous les éléments ayant comme classe "important" ?
+## Quel sélecteur CSS permet de cibler l'élément ayant l'id "id-unique" ?
 
 +++
 
-1. #important { ...
-1. .important { ...
-1. important { ...
+1. `#id-unique { ...`
+1. `.id-unique { ...`
+1. `id-unique { ...`
+1. `@id-unique {...`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Comment un sélecteur CSS peut-il cibler tous les paragraphes ?
+## Quel sélecteur CSS permet de cibler tous les éléments ayant comme classe "important" ?
 
 +++
 
-1. #p {...
-1. \.p {...
-1. p {...
+1. `#important { ...`
+1. `.important { ...`
+1. `important { ...`
+1. `@important { ...`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Comment un sélecteur CSS peut-il cibler tous les paragraphes ?
+## Quel sélecteur CSS permet de cibler tous les paragraphes ?
 
 +++
 
-1. html body {...
-1. \* {...
-1. p {...
+1. `#p {...`
+1. `.p {...`
+1. `p {...`
+1. `@p { ...`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Comment un sélecteur peut-il cibler les paragraphes de classe "important" et ceux de classe "super-important" ?
+## Quel sélecteur CSS permet de cibler tous les paragraphes ?
 
 +++
 
-1. p.important p.super-important
-1. p.important.super-important
-1. p important super-important
+1. `html body {...`
+1. `* {...`
+1. `p {...`
+1. Tous les sélecteurs ci-dessus 
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## Comment un sélecteur peut-il cibler les paragraphes ayant les deux classes "important" et "super-important" ?
+## Quel sélecteur CSS permet de cibler les paragraphes ayant les deux classes "important" et "super-important" ?
 
 +++
 
-1. p.important p.super-important
-1. p.important.super-important
-1. p important super-important
+1. `p.important p.super-important`
+1. `p.important.super-important`
+1. `p important super-important`
+1. Aucun des sélecteurs ci-dessus
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## Comment un sélecteur peut-il cibler les paragraphes de classe "important" en même temps que les paragraphes de classe "super-important" ?
+
++++
+
+1. `p.important p.super-important`
+1. `p.important.super-important`
+1. `p important super-important`
+1. Aucun des sélecteurs ci-dessus
