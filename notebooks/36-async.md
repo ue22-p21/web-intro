@@ -164,6 +164,8 @@ new Promise(
 )
 ```
 
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## `async` keyword
 
 +++
@@ -188,7 +190,7 @@ async function foo1() {
         // in case of failure, do not wait
         throw 1 // Equivalent to reject(1);
     } else {
-        // in case of success, wait for 1 s
+        // in case of success, wait for 1 s (not implemented, see how next exemple)
         return 10 // Equivalent to resolve(1);
     }
 }
@@ -215,6 +217,8 @@ foo1()
     }
 )
 ```
+
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## `await` keyword
 
