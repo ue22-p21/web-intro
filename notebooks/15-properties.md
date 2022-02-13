@@ -216,7 +216,7 @@ some characters can be inserted with the same `&...;` notation using nicknames i
 
 * `&lt;` for &lt; and `&gt;` for &gt;  
   sometimes useful to actually insert brackets like in &lt;code&gt;
-* `&nbspc;` for a non-breaking&nbsp;space  
+* `&nbsp;` for a non-breaking&nbsp;space
   which is more explicit/readable
 * `&hellip;` for &hellip;
 

@@ -108,7 +108,7 @@ for our use case we only need to load one fragment of code
   * `<script src="foo.js"></script>` loads `foo.js` from the same directory as the current page
   * `<script src="/path/foo.js"></script>` loads `/path/foo.js` from current location
   * `<script src="https://url.com/path/foo.js"></script>` loads `/path/foo.js` from the given absolute url
-* You can use the attribute `defer` to ensure to run the script once the entire page is loaded: `<script src="foo.js" defer></scritp>`
+* You can use the attribute `defer` to ensure to run the script once the entire page is loaded: `<script src="foo.js" defer></script>`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
