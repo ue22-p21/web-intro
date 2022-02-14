@@ -42,13 +42,24 @@ tools.init()
 
 +++
 
-* loading javascript is somehow tricky and is **still an open topic** because: 
-  * how network work
-  * of complex dependency that can rise in real code 
-  * typical use case module X needs module Y   
+* loading javascript is a bit tricky  
+and is **still an open topic** because of: 
+  * how networking works
+  * complex dependency that can rise in real code  
+    typically, you need module X  
+    that in turns needs module Y, etc…  
     just like when a Python module does `import another`
+  * the evolutions of the language over time  
+    proper modules are available only since ES6 - circa 2016  
+    and that takes time to get widely adopted
 
-we will come back later on this topic, but for now stay simple
++++
+
+<div class="rise-footnote">
+
+we will come back later on this topic, but for now let's keep it simple
+    
+</div>    
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -93,10 +104,20 @@ for our use case we only need to load one fragment of code
 
 +++
 
-* most often though, code is stored in a separate location
+* most often though, code is stored in a **separate location**
   * either as a companion to the HTML page
   * or in a remote location
 * for that, use `<script src="some-url"></script>`
+
++++
+
+<div class="rise-footnote">
+  
+Notes
+    
+* see also the slides on relative and absolute URLs
+    
+</div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -104,11 +125,13 @@ for our use case we only need to load one fragment of code
 
 +++ {"slideshow": {"slide_type": ""}}
 
-* behaviour of `<script>` tag is similar to the load of css files
-  * `<script src="foo.js"></script>` loads `foo.js` from the same directory as the current page
-  * `<script src="/path/foo.js"></script>` loads `/path/foo.js` from current location
-  * `<script src="https://url.com/path/foo.js"></script>` loads `/path/foo.js` from the given absolute url
-* You can use the attribute `defer` to ensure to run the script once the entire page is loaded: `<script src="foo.js" defer></script>`
+* behaviour of `<script>` tag is similar to loading css files  
+  * `<script src="foo.js"></script>`  
+    loads `foo.js` from the **same folder** as the current page
+  * we can also use any URL in the `src` attribute to load from other folders or locations  
+    for example from `https://cdnjs.cloudflare.com/`
+* You can use the attribute `defer` to ensure the script runs once the entire page is loaded  
+  `<script src="foo.js" defer></scritp>`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
