@@ -12,7 +12,7 @@ kernelspec:
   language: javascript
   name: javascript
 nbhosting:
-  title: js intro
+  title: JS by examples
 rise:
   autolaunch: true
   slideNumber: c/t
@@ -28,7 +28,7 @@ rise:
 
 +++ {"slideshow": {"slide_type": ""}}
 
-# JavaScript
+# JavaScript by examples
 
 ```{code-cell}
 delete require.cache[require.resolve('../js/toolsv3')]
