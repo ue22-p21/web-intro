@@ -103,7 +103,7 @@ my_circle.createElementNS(svgNS, 'circle');</pre></code>
 
 
     <div id="callbacks" class="group">
-      <div class="title">arm callbacks <span class="normal">
+      <div class="title">arming callbacks <span class="normal">
           <code>a_function</code> denotes a function object</code></span></div>
 
       <div class="bullet">
@@ -131,6 +131,18 @@ my_circle.createElementNS(svgNS, 'circle');</pre></code>
         <span class="what">causes <code>a_function()</code> to be called<br><b>once</b> in 400ms</span>
       </div>
 
+    </div>
+
+    <div id="events" class="group">
+      <div class="title">using events
+        <span class="normal">assume you have attached a callback with, say,
+          <code>elt.addEventListener('click', (event) => {...})</code>
+          <br style="padding-top:6px">here's how to use the <code>event</code> object
+        </span></div>
+      <div class=""bullet>
+        <code>event.target</code>
+        <span>locate the element that received the event</span>
+      </div>
     </div>
   </div>
 </body>
