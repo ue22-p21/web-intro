@@ -547,7 +547,7 @@ copy
 
 * you can access an attribute with either of these 2 forms
   * `object.first_name`
-  * `object.['first_name']`
+  * `object['first_name']`
 * the difference being that
   * `object.first_name` takes the key name litterally
   * `object[expr]` **evaluates** `expr`, that should give a key name
