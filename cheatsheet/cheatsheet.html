@@ -30,19 +30,20 @@
       <div class="title">DOM locating elements</div>
 
       <div class="bullet">
-        <code class="code">my_element = document.getElementById("foo")</code>
-        → <span class="what">returns the DOM element with that <code>id</code></span>
+        <code class="code">elt = document.getElementById("foo")</code>
+        → <span class="what">returns the DOM element whose <code>id</code> is 
+          <code>foo</code></span>
       </div>
 
       <div class="bullet bullet-sep">
-        <code class="code">my_element = document.querySelector(".myclass")</code>
+        <code class="code">elt = document.querySelector(".myclass")</code>
         → <span class="what">returns <b>the first</b> DOM element that matches
           <br> a CSS selector
         </span>
       </div>
 
       <div class="bullet bullet-sep">
-        <code class="code">my_elements = document.querySelectorAll(".myclass")</code>
+        <code class="code">elts = document.querySelectorAll(".myclass")</code>
         → <span class="what">returns all DOM elements that matches
           <br> a CSS selector; see below for how to iterate over that.
         </span>
@@ -55,18 +56,34 @@
 
 
       <div class="bullet">
-        <code class="code">my_element.style.display = "none"</code>
-        <span class="what">change propery <code>display</code>
-          on <code>my_element</code>
+        <code class="code">elt.style.display = "none"</code>
+        <span class="what">change property <code>display</code>
+          on <code>elt</code>
           <br>to change a property whose name contains a dash,
           <br> like <code>background-color</code>, use
-          <br><code>my_element.style.backgroundColor = "none"</code>
+          <br><code>elt.style.backgroundColor = "none"</code>
       </div>
 
       <div class="bullet">
-        <code class="code">my_element.textContent = "text"</code>
-        <span class="what">change the text inside a HTML element
+        <code class="code">
+          elt.classList.add('my-class')
+        </code>
+        <span class="what">adds a class to an element</span>
       </div>
+      <div class="bullet">
+        <code class="code">
+          elt.classList.remove('my-class')
+        </code>
+        <span class="what">remove a class from an element</span>
+      </div>
+
+      <div class="bullet">
+        <code class="code">elt.textContent = "text"</code>
+        <span class="what">change the text inside a HTML element
+          <br> see also <code>.innerHTML</code> to graft a whole tree instead
+        </span>
+      </div>
+
     </div>
 
     <div id="DOM-adding" class="group">
@@ -102,7 +119,7 @@ my_circle.createElementNS(svgNS, 'circle');</pre></code>
       <div class="title">DOM iterating over elements</div>
 
       <div class="bullet">
-        <code class="code">for (let child of my_element.children)</code>
+        <code class="code">for (let child of elt.children)</code>
         <span class="what">iterates over the children of a given DOM element
         </span>
       </div>
@@ -110,7 +127,7 @@ my_circle.createElementNS(svgNS, 'circle');</pre></code>
       <div class="bullet">
         <code class="code">for (let element of document.querySelectorAll(selector))
         </code>
-        <span class="what">iterates over a NodeList or HTMLCollection, 
+        <span class="what">iterates over a NodeList or HTMLCollection,
           as returned by either <code>QuerySelectorAll</code> or
           <code>getElementsByClassName</code>
           <br>
@@ -131,11 +148,11 @@ my_circle.createElementNS(svgNS, 'circle');</pre></code>
       </div>
 
       <div class="bullet">
-        <code class="code">my_element.addEventListener("click", a_function);</code>
+        <code class="code">elt.addEventListener("click", a_function);</code>
         <span class="what">will cause <code>a_function(event)</code> to be called
           <br>each time a user clicks on that element
-          <br>using <i>event</i> the function can access details on that event
-          <br>other event names are available instead of <code>"click"</code>
+          <br>other event names are exposed as well</code>
+          <br>through <code>event</code> the function can access details on that event (see below)
         </span>
       </div>
 
