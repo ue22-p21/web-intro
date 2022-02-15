@@ -66,6 +66,22 @@ hello world
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+## `console.log()` function
+
++++
+
+* a function to show output
+* very similar to Python's `print()` function
+  * of course from a browser it ends up in the devel tools area
+  * but under `node` it will just print
+* accepts any number of arguments
+
+```{code-cell}
+console.log(1, "two", [3, "four"])
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## syntax
 
 +++
@@ -89,8 +105,8 @@ a = 10;
 b = a * a
 
 /* this is another comment
-   everything including newlines 
-   is ignored until matching 
+   everything including newlines
+   is ignored until matching
 */
 ```
 
@@ -108,11 +124,11 @@ b = a * a
 ```{code-cell}
 :cell_style: split
 
-// conditional if 
+// conditional if
 if (a == 10) {
     console.log("YES 10");
 } else if (a == 12) {
-    // 
+    //
 } else {
     //
 }
@@ -154,7 +170,7 @@ switch (a) {
         console.log("TWENTY");
         break;
     default:
-        console.log("NONE");        
+        console.log("NONE");
 }
 ```
 
@@ -167,7 +183,7 @@ switch (a) {
 +++
 
 * C- or Java-like iteration loops are supported
-* although seldom needed 
+* although seldom needed
 * more on that about container types (arrays, …)
 
 ```{code-cell}
@@ -211,7 +227,7 @@ typeof(s)
 ### Python-style unpacking assignment
 
 ```{code-cell}
-// there is a form of parallel assignment 
+// there is a form of parallel assignment
 // similar to what Python offers
 
 let [py, thon] = [10, 20];
@@ -246,7 +262,7 @@ tags: [raises-exception]
 let a = "global";
 
 function foo() {
-    // this local declaration 
+    // this local declaration
     // hides the global variable
     let a = "local";
     console.log("in foo():", a);
@@ -262,7 +278,7 @@ foo()
 
 +++
 
-* you should **always** declare your variables with **`let`** 
+* you should **always** declare your variables with **`let`**
   * even though (a lot of) legacy code does not
   * or uses `var` instead - which is not recommended
 
@@ -270,12 +286,12 @@ foo()
 
 +++
 
-<p class="rise-footnote"> 
+<p class="rise-footnote">
     when declaring a variable with <code>let</code>,
-    it cannot be declared a second time within the same block; 
+    it cannot be declared a second time within the same block;
 <br>
     in the context of notebooks, a drawback of this is
-    that you cannot run a cell twice if 
+    that you cannot run a cell twice if
     it uses a toplevel <code>let</code>
 </p>
 
@@ -292,9 +308,9 @@ foo()
 :tags: [raises-exception]
 
 let y = "outermost";
-{ 
+{
     let y = "intermediate";
-    { 
+    {
         let y = "innermost";
         console.log("level 2", y);
     }
@@ -405,6 +421,26 @@ show_this()
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+## exceptions
+
++++
+
+* JavaScript supports exceptions, just like Python
+* same bubbling mechanism
+  * that scans the call stack
+  * until a `catch` statement is found
+
+```{code-cell}
+try {
+    // referring to an unknown variable
+    unknown;
+} catch (err) {
+    console.log(`OOPS name=${err.name}, message=${err.message}`);
+}
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## classes
 
 +++
@@ -422,7 +458,7 @@ class Vector {
         this.y = y;
     }
 
-    // same for a regular method 
+    // same for a regular method
     display() {
         console.log(`[Vector x=${this.x} y=${this.y}]`)
     }
@@ -432,9 +468,9 @@ let vector = new Vector(10, 20)
 vector.display()
 ```
 
-<p class="rise-footnote"> here again, running this cell twice will cause an error; this is because, like with <code>let</code>, 
+<p class="rise-footnote"> here again, running this cell twice will cause an error; this is because, like with <code>let</code>,
     <br>
-    the language won't let you define the same <code>Vector</code> class 
+    the language won't let you define the same <code>Vector</code> class
     twice in the same scope</p>
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -446,7 +482,7 @@ vector.display()
 **NOTICE** the following from that first class example :
 
 * `constructor` is very much alike `__init__` in Python
-* the **implicit** `this` variable refers to the current object 
+* the **implicit** `this` variable refers to the current object
 * it is very much alike the traditional `self` argument in Python
 * except that it is **not mentioned** as a method parameter
 * objects get created with `new Vector()` - Java and C++ style
@@ -454,19 +490,19 @@ vector.display()
 
 +++
 
-<p class="rise-footnote"> 
-    also notice the string-formatting syntax 
+<p class="rise-footnote">
+    also notice the string-formatting syntax
     <code>`text ${variable}`</code>
     similar to Python's f-strings,
     <br>
     except that an expression is inserted with <code>${expr}</code>, remember with f-strings it was just <code>{expr}</code>
 </p>
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
 
 ### properties
 
-+++
++++ {"tags": ["level_intermediate"]}
 
 * modern JavaScript has a native notion of properties
 * i.e. expose an apparently mundane access  
@@ -475,12 +511,13 @@ vector.display()
 * that intercept read/write attempts  
   on the attribute
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
 
 ### property example
 
 ```{code-cell}
 :cell_style: split
+:tags: [level_intermediate]
 
 class Temperature {
     constructor(temperature) {
@@ -501,10 +538,10 @@ class Temperature {
         this._kelvin = temperature;
 
         // we must use the hidden variable this._kelvin
-        // that will store the value entered 
+        // that will store the value entered
         // and will be returned when we ask for this.kelvin
         // thanks to the get kevin() function
-        
+
         // if we had written this.kelvin = temp_value
         // that would call set kelvin(temp_value) again
         // and we would have an infinite loop
@@ -515,18 +552,21 @@ class Temperature {
 
 ```{code-cell}
 :cell_style: split
+:tags: [level_intermediate]
 
 let temp = new Temperature(10)
 ```
 
 ```{code-cell}
 :cell_style: split
+:tags: [level_intermediate]
 
 temp.kelvin = -10
 ```
 
 ```{code-cell}
 :cell_style: split
+:tags: [level_intermediate]
 
 temp
 ```
@@ -541,74 +581,3 @@ temp
 * you may come across older-school code that uses other techniques
 * typically involving a `prototype` thingy
 * here again for new code you should stick to the new idiom
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## `console.log()` function
-
-+++
-
-* a function to show output
-* very similar to Python's `print()` function
-  * of course from a browser it ends up in the devel tools area
-  * but under `node` it will just print
-* accepts any number of arguments
-
-```{code-cell}
-console.log(1, "two", [3, "four"])
-```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### `console.log()` and objects
-
-+++ {"slideshow": {"slide_type": ""}}
-
-**TIP** about debugging JS objects :
-
-```{code-cell}
----
-cell_style: split
-slideshow:
-  slide_type: ''
----
-// it may be tempting to write
-console.log(`vector = ${vector}`)
-```
-
-```{code-cell}
----
-cell_style: split
-slideshow:
-  slide_type: ''
----
-// but it is better like this
-console.log("vector = ", vector)
-```
-
-<p class="rise-footnote">
-    try it out within the browser's console :
-    <br> try to run <code>console.log(document)</code> or any other JS object, 
-    and see that you can navigate the inner structure of the object, 
-    rather a flat representation that traditional languages have used us to
-</p>
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## exceptions
-
-+++
-
-* JavaScript supports exceptions, just like Python
-* same bubbling mechanism
-  * that scans the call stack 
-  * until a `catch` statement is found
-
-```{code-cell}
-try {
-    // referring to an unknown variable
-    unknown;
-} catch (err) {
-    console.log(`OOPS name=${err.name}, message=${err.message}`);
-}
-```

@@ -48,13 +48,12 @@ rise:
 <div class="rise-footnote">
 
 **NOTE** on using **notebooks**  
-as mentioned, all variables should be declared with either `let` or `const`  
+as mentioned earlier, all variables should be declared with either `let` or `const`  
 however, in a notebook this is inconvenient because one **cannot declare** the **same variable twice** in the same scope  
 and so using `let` would prevent us from re-evaluating the same cell twice  
 in order to remind you of the necessity to declare everything  
 we will add commented-out `/*let*/` chunks when using a new variable    
-   
-    
+
 </div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -71,7 +70,7 @@ we will add commented-out `/*let*/` chunks when using a new variable
 :cell_style: split
 
 // usual operators, here
-// ** is power and 
+// ** is power and
 // % is modulo
 (100 ** 9) % 11
 ```
@@ -85,11 +84,12 @@ let s2 = 'ab' + "cdef"
 s1 == s2
 ```
 
-<p class="rise-footnote">
-    <b>beware</b> that <code>number</code> is similar to Python's <code>float</code> -- so <b>with imprecision</b> !  
-    <br>
-    google for <code>bigint</code> for error-free calculus on integers - like Python's <code>int</code>
-</p>
+<div class="rise-footnote">
+
+**beware** that `number` is similar to Python's `float` -- so **with imprecision !**  
+google for `bigint` for error-free calculus on integers - like Python's `int`
+
+</div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -109,7 +109,7 @@ s1 == s2
 // in anticipation
 /*let*/ object = { x: 10, y: 20}
 
-// this in Python would 
+// this in Python would
 // trigger an exception
 console.log(object.z)
 ```
@@ -118,7 +118,7 @@ console.log(object.z)
 :cell_style: split
 
 // unlike Python
-3 * "abc" 
+3 * "abc"
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -237,7 +237,7 @@ array
 ```{code-cell}
 :cell_style: split
 
-// and NOT addition, 
+// and NOT addition,
 // it does NOT work like in Python
 array1 + array2
 ```
@@ -245,19 +245,19 @@ array1 + array2
 ```{code-cell}
 :cell_style: split
 
-// indexing starts at 0 
+// indexing starts at 0
 array[2]
 ```
 
 ```{code-cell}
 :cell_style: split
 
-array.length 
+array.length
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### searching
+### searching in array
 
 +++
 
@@ -305,7 +305,7 @@ for (let x of array1) {
 
 +++ {"cell_style": "split"}
 
-* using `in` keyword iterate through indices:
+* using `for .. in` iterates over **indices**:
 
 ```{code-cell}
 :cell_style: split
@@ -347,7 +347,7 @@ that we'll see in the next chapter, but it's worth outlining this already
 * as you expect, there are many more methods available, like  
   `.sort()`, `.reverse()`  
   `.join()`, `.slice()`, `.splice()`,  
-  `.shift()`, `.unshift()` 
+  `.shift()`, `.unshift()`
 
 * for more details, see on *javascript.info*
   * [this article on Arrays](https://javascript.info/array)
@@ -366,7 +366,7 @@ that we'll see in the next chapter, but it's worth outlining this already
 :cell_style: split
 
 /*let*/ ref1 = [["shared", "data"], "unshared"]
-ref1 
+ref1
 ```
 
 ```{code-cell}
@@ -399,8 +399,124 @@ ref1
 
 ### pythontutor illustration
 
-
 ![](../media/references-shared.png)
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## args are passed by reference
+
++++
+
+* like in Python, when passing a composite object  
+  (array, map, object, …) to a function
+* you pass a **reference** (not a copy),  
+  so the function can alter its parameter
+* so this means **shared references** and possible side effects
+
+```{code-cell}
+:cell_style: split
+
+// on an array
+function side_effect(arg) {
+    arg[1] *= 1000
+}
+
+/*let*/ list = [0, 1, 2]
+side_effect(list)
+list
+```
+
+```{code-cell}
+:cell_style: split
+
+// same with objects
+function change_object(obj) {
+    obj.first_name = 'BOOM'
+}
+
+/*let*/ person2 = new Person('John Doe')
+change_object(person2)
+person2
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### arguments passing is loosely checked
+
+```{code-cell}
+// just display arguments
+function foo(x, y, z) {
+    console.log(`x=${x}, y=${y}, z=${z}`)
+}
+```
+
+```{code-cell}
+:cell_style: split
+
+// works fine, of course
+foo(1, 2, 3)
+```
+
+```{code-cell}
+:cell_style: split
+
+// works fine TOO !
+foo(1, 2)
+```
+
+```{code-cell}
+// and this one AS WELL !!
+foo(1, 2, 3, 4)
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### more on arguments
+
++++
+
+* unlike Python there is no named arguments  ~~`foo(arg0=10)`~~
+* nor of arguments with default values
+* there is however a way to deal with a **variable number of arguments**
+
+```{code-cell}
+// equivalent to Python's
+// def bar(x, y, *args):
+
+function bar(x, y, ...arguments) {
+    // display what we receive
+    console.log(`x=${x}, y=${y}`)
+    console.log(`arguments=${arguments}`)
+    // the arguments object can be iterated on
+    for (let arg of arguments) {
+        console.log(arg)
+    }
+}
+
+// with this call, the 2 extra args are captured
+bar(1, 2, 3, 4)
+```
+
+```{code-cell}
+---
+slideshow:
+  slide_type: slide
+---
+// and the other way around
+// with the so-called spread operator
+
+function foo(x, y, z) {
+    // just to illustrate the mapping
+    console.log({x, y, z})
+}
+
+L = [1, 2, 3]
+
+// just like foo(*L) in Python
+//   (remember we've seen the same
+//    construction with objects earlier too)
+foo(...L)
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -541,7 +657,7 @@ copy
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### iterating over an object's keys
+### accessing object keys & iterations
 
 +++
 
@@ -596,6 +712,43 @@ demo()
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+### `console.log()` and objects
+
++++ {"slideshow": {"slide_type": ""}}
+
+**TIP** about debugging JS objects :
+
+```{code-cell}
+---
+cell_style: split
+slideshow:
+  slide_type: ''
+---
+// it may be tempting to write
+console.log(`vector = ${vector}`)
+```
+
+```{code-cell}
+---
+cell_style: split
+slideshow:
+  slide_type: ''
+---
+// but it is better like this
+console.log("vector = ", vector)
+```
+
+<div class="rise-footnote">
+
+try it out within the browser's console:  
+try to run `console.log(document)` or any other JS object  
+and observe that you can navigate the inner structure of the object  
+rather a flat text representation that traditional languages have used us to
+
+</div>
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## class instances are objects
 
 ```{code-cell}
@@ -609,124 +762,4 @@ class Person {
 /*let*/ person = new Person("John", "Doe")
 
 typeof(person)
-```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## argument passing
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### arguments are passed by reference
-
-+++
-
-* like in Python, when passing a composite object  
-  (array, map, object, …) to a function
-* you pass a **reference** (not a copy),  
-  so the function can alter its parameter
-
-```{code-cell}
-:cell_style: split
-
-// on an array
-function side_effect(arg) {
-    arg[1] *= 1000
-}
-
-/*let*/ list = [0, 1, 2]
-side_effect(list)
-list
-```
-
-```{code-cell}
-:cell_style: split
-
-// same with objects
-function change_object(obj) {
-    obj.first_name = 'BOOM'
-}
-
-/*let*/ person2 = new Person('John Doe')
-change_object(person2)
-person2
-```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### arguments passing is loosely checked
-
-```{code-cell}
-// just display arguments
-function foo(x, y, z) {
-    console.log(`x=${x}, y=${y}, z=${z}`)
-}
-```
-
-```{code-cell}
-:cell_style: split
-
-// works fine, of course
-foo(1, 2, 3)
-```
-
-```{code-cell}
-:cell_style: split
-
-// works fine TOO !
-foo(1, 2)
-```
-
-```{code-cell}
-// and this one AS WELL !!
-foo(1, 2, 3, 4)
-```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### more on arguments
-
-+++
-
-* unlike Python there is no named arguments ak. `foo(arg0=10)`
-* nor of arguments with default values
-* **there is** however a way to deal with variable number of arguments
-
-```{code-cell}
-// equivalent to Python's 
-// def bar(x, y, *args):
-
-function bar(x, y, ...arguments) {
-    // display what we receive
-    console.log(`x=${x}, y=${y}`)
-    console.log(`arguments=${arguments}`)
-    // the arguments object can be iterated on
-    for (let arg of arguments) {
-        console.log(arg)
-    }
-}
-
-// with this call, the 2 extra args are captured 
-bar(1, 2, 3, 4)
-```
-
-```{code-cell}
----
-slideshow:
-  slide_type: slide
----
-// and the other way around
-// with the so-called spread operator
-
-function foo(x, y, z) {
-    // just to illustrate the mapping
-    console.log({x, y, z})
-}
-
-L = [1, 2, 3]
-
-// just like foo(*L) in Python
-//   (remember we've seen the same 
-//    construction with objects earlier too)
-foo(...L)
 ```
