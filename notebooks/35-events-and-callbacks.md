@@ -75,6 +75,15 @@ here corresponding to the end of the page load
 
 * many events are available ; a list of some of them is [here w3school.com](https://www.w3schools.com/jsref/dom_obj_event.asp)
 
++++
+
+<div class="rise-footnote">
+
+see also the `DOMContentLoaded` event that is subtly different
+<https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event>
+
+</div>
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### `addEventListener`
