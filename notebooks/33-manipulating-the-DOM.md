@@ -32,6 +32,12 @@ rise:
 
 # manipulating the DOM
 
+```{code-cell}
+delete require.cache[require.resolve('../js/toolsv3')]
+tools = require('../js/toolsv3')
+tools.init()
+```
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## about the DOM
@@ -94,8 +100,6 @@ you can find a cheatsheet that summarizes most of this
 ```{code-cell}
 :hide_input: true
 
-delete require.cache[require.resolve('../js/toolsv3')]
-tools = require('../js/toolsv3')
 tools.sample_from_stem("../cheatsheet/cheatsheet",
                       {width: '10em', height: '10em'})
 ```

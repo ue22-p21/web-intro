@@ -127,7 +127,7 @@ visibility of symbols (variable and function names) :
 
 +++ {"slideshow": {"slide_type": "slide"}, "hide_input": true}
 
-## example 2
+## example #2
 
 +++
 
@@ -200,7 +200,7 @@ tools.sample_from_stem("../samples/30-js-intro-02-svgcircles",
 
 +++ {"slideshow": {"slide_type": "slide"}, "hide_input": true}
 
-## example 3
+## example #3
 
 +++ {"slideshow": {"slide_type": "-"}}
 
@@ -295,9 +295,9 @@ there are 2 http requests at work
 * browser-hosted code has  
   **little control** on overall **order**  
 * plus, apps need to **react to events** that can be  
-  * **user-**triggered (clicking, ...)
-  * **network-**triggered (a page finished loading)
-  * or **time-**triggered - some cyclic task is scheduled
+  * **user**-triggered (clicking, ...)
+  * **network**-triggered (a page finished loading)
+  * or **time**-triggered - some cyclic task is scheduled
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
