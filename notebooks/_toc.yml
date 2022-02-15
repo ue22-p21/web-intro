@@ -30,7 +30,7 @@ parts:
   - file: 31-js-language-overview
   - file: 32-builtin-types
   - file: 33-manipulating-the-DOM
-  - file: 34-loading-javascript
+#  - file: 34-loading-javascript
   - file: 35-events-and-callbacks
   - file: 36-async
   - file: 37-fetch
@@ -41,6 +41,7 @@ parts:
   - file: 42-exo-calculator
   - file: 43-exo-spinning-wheel
   - file: 44-exos-miscell
+  - file: 45-exo-grid
 - caption: "Optional content"
   chapters:
   - file: 51-jquery
