@@ -26,7 +26,7 @@ parts:
   - file: 25-exo-cv
 - caption: "Course 3 - a bit of JS"
   chapters:
-  - file: 30-js-intro
+  - file: 30-js-by-examples
   - file: 31-js-language-overview
   - file: 32-builtin-types
   - file: 33-manipulating-the-DOM

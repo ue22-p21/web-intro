@@ -1,6 +1,3 @@
-// we will see in the next notebook
-// how to load javascript code
-
 function toggle() {
   // from the 'document' global variable
   // locate the element that we want to toggle
