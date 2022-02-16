@@ -46,19 +46,23 @@ class Board {
   }
 }
 
-let the_board = new Board(200, 200, 4)
-
-// this function is used directly in the HTML
-function start_stop() {
-  the_board.toggle()
-}
-
-// initialize svg size, and start the loop,
-// but only once the page is loaded
+// initialize, but only once the page is loaded
 window.addEventListener('load',
   function () {
+    // create instance
+    let the_board = new Board(200, 200, 4)
+    the_board.start()
+
+    // set svg size
     let svg = document.querySelector("svg")
     svg.setAttribute('width', the_board.w)
     svg.setAttribute('height', the_board.h)
-    the_board.start()
+
+    // arm callback
+    document.getElementById("button")
+      .addEventListener('click', () => the_board.toggle())
+      // note that this form would not work
+      // .addEventListener( 'click', the_board.toggle )
+      // because the 'this' variable in toggle()
+      // would reference the button element
   })
