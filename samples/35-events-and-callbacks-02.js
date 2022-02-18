@@ -1,3 +1,6 @@
+// a much more usual way to achieve the same
+// this time we use 0 global variable
+
 window.addEventListener(
   "load",
   () => {
@@ -8,18 +11,16 @@ window.addEventListener(
       "keydown", (event) => {
         // for inspection in the console
         console.log("KEYDOWN", event)
-        // display in dedicated area 'result'
-        document.getElementById("result").textContent 
+        // display in dedicated area 'result-text'
+        document.getElementById("result-text").textContent
           = `typed key ${event.key}`
       }
     )
     document.getElementById("graphic-svg")
       .addEventListener(
       "click", (event) => {
-        // for inspection in the console
         console.log("CLICK", event)
-        // display in dedicated area 'result'
-        document.getElementById("result").textContent
+        document.getElementById("result-text").textContent
           = `clicked ${event.offsetX}x${event.offsetY}`
       }
     )

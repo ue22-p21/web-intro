@@ -44,7 +44,8 @@ tools.init()
 
 * due to the specificity of the browser and the network, JavaScript within the browser is not driven like other languages
   * there is no main() function that runs forever
-  * it is not driven like video game with infinite loop that eats all the CPU
+  * it is not either driven like a video game  
+    by an infinite loop that eats all the CPU
   * instead JavaScript is driven by **events**
 * events can have different natures:
   * can come from the **user activity** such as mouse click
@@ -61,7 +62,8 @@ tools.init()
 
 * events are handled using callbacks,
 * callbacks are functions that are called when an event occur
-* to get a function to be called on a given event, you have to use the `addEventListener`
+* to get a function to be called on a given event,  
+  you have to use the `addEventListener`
 
 for exemple, to have function `foo` called when the page is loaded, you can use the following code:
 
@@ -70,10 +72,8 @@ for exemple, to have function `foo` called when the page is loaded, you can use 
 window.addEventListener("load", foo)
 ```
 
-where `load` is the name of the event  
-here corresponding to the end of the page load
-
-* many events are available ; a list of some of them is [here w3school.com](https://www.w3schools.com/jsref/dom_obj_event.asp)
+* where `"load"` is the name of the event (here the end of the page load)
+* and `foo` is a (variable that denotes) a *function* object
 
 +++
 
@@ -92,10 +92,19 @@ see also the `DOMContentLoaded` event that is subtly different
 
 * a fundamental tool to record a callback with an event
 * available on most objects
-* observe on the example how the callbacks **receive the event** in parameter
+* observe on the example how the callback **receives the event** in parameter
 * and because we use `console.log(event)`  
   we have the option to inspect the event object in the console  
   and see all its attributes
+
++++
+
+<div class="rise-footnote">
+
+also note that we have seen already several examples of a **callback** that was a function that **takes no parameter**  
+this is one of the reasons why JS is so flexible/lenient with respect to argument passing
+    
+</div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -104,7 +113,7 @@ see also the `DOMContentLoaded` event that is subtly different
 ```{code-cell}
 :hide_input: true
 
-tools.sample_from_stem("../samples/35-async-01-events",
+tools.sample_from_stem("../samples/35-events-and-callbacks-01",
                        {separate_show: true, width: '40em', start_with: 'js'})
 ```
 
@@ -191,7 +200,7 @@ window.addEventListener(
 ```{code-cell}
 :hide_input: true
 
-tools.sample_from_stem("../samples/35-async-02-events",
+tools.sample_from_stem("../samples/35-events-and-callbacks-02",
                        {separate_show: true, width: '40em', start_with: 'js'})
 ```
 
@@ -236,16 +245,15 @@ try {
 
 ### closures - continued
 
-+++ {"cell_style": "split"}
-
-```javascript
+```{code-cell}
+---
+cell_style: split
+slideshow:
+  slide_type: ''
+---
 { 
   let context = {a:1, b:2};
-  setTimeout( 
-    function() {
-      console.log(context);
-    },
-    2000);
+  setTimeout(() => console.log(context), 2000)
   console.log("armed");
 }
 ```
@@ -253,7 +261,7 @@ try {
 +++ {"cell_style": "split"}
 
 * `context` is created in a block
-* that is long gone at the time the callback triggers
+* that is **long gone** at the time the callback triggers
 * but it is still reachable from the callback
 * as it was *captured* in the closure
 
@@ -266,14 +274,18 @@ try {
 * highly recommended to study the [introduction to callbacks in javascript.info](https://javascript.info/callbacks)
 * that highlights the fundamental drawback of using callbacks
 * which is that you need to split your code into pieces and fit the pieces into functions
-* it easily becomes hard to read and modify especially if there is logic involved
+* it easily becomes hard to read and modify, especially if there is logic involved
 
 +++
 
-so far we have seen a few types of events (e.g. `load`, `keydown`, `click`)
+<div class="rise-footnote">
+
+again, so far we have seen a few types of events (e.g. `load`, `keydown`, `click`)
 
 * for more details and a more exhaustive list of available events  
   see [this section in javascript.info](https://javascript.info/event-details)
+    
+</div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -314,6 +326,8 @@ function ok() {
 
 ok()
 ```
+
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## see also
 
