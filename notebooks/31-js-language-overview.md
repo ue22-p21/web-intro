@@ -445,7 +445,7 @@ try {
 
 +++
 
-as of ES6, the language has a proper `class` statement
+as of ES2015, the language has a proper `class` statement
 
 _Note:_ older JavaScript does not have class and use other ways to create pseudo-classes
 
@@ -577,7 +577,6 @@ temp
 
 +++ {"tags": ["level_intermediate"]}
 
-* ES6 is relatively recent
 * you may come across older-school code that uses other techniques
 * typically involving a `prototype` thingy
 * here again for new code you should stick to the new idiom

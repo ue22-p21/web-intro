@@ -170,7 +170,7 @@ new Promise(
 
 +++
 
-with `async` you can declare functions that return a `Promise` by default
+with `async` (since ES2017) you can declare functions that return a `Promise` by default
 
 ```{code-cell}
 // when called this fonction will return a Promise

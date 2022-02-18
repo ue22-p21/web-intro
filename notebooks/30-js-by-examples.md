@@ -148,7 +148,7 @@ and is **still an open topic** because of:
     that in turns needs module Y, etc…  
     just like when a Python module does `import another`
   * the evolutions of the language over time  
-    proper modules are available only since ES6 - circa 2016  
+    proper modules are available only since ES2015  
     and that takes time to get widely adopted
 
 +++
