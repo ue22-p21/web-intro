@@ -64,3 +64,9 @@ div.cell.text_cell .prompt.input_prompt {
     line-height: 1;
     margin: 3px;
 }
+
+/* raw code between ``` is too large */
+.text_cell code.language-js {
+    font-size: 65%;
+    line-height: 1.2em;
+}
