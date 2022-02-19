@@ -127,7 +127,7 @@ all this allows for *chaining*, like e.g.
 // the easiest way to create a boring promise
 // that always succeeds
 Promise.resolve(5)
-    .then(res => res * 2)
+   .then(res => res * 2)
    .then(res => res * 2)
    .then(res => res * 2)
    .then(res => res * 2)
@@ -272,11 +272,11 @@ function get_url2(url) {
 }
 ```
 
-+++
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## `.catch()` recalls exception handling
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": ""}}
 
 * let us run this code with an invalid URL
 * note that the error occurs in the `fetch()` call itself
@@ -353,7 +353,7 @@ observe that the chained form is linear, which reflects the actual workflow here
 // more interesting:
 // let us call get_url2 on the 3 URLS
 // **at the same time**
-for (let url of [URL_broken, URL_small, URL_large]) 
+for (let url of [URL_broken, URL_small, URL_large])
     get_url2(url)
 ```
 
@@ -401,28 +401,17 @@ but the notebook *hangs* until the promise is complete, so here again you may wa
 
 </div>
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
-
-## more on promises
-
-+++
-
-this is just an overview, refer to <https://javascript.info/promise-basics> for a more thorough description
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## `async` keyword
 
 +++
 
-with `async` (since ES2017) we can declare functions that return a `Promise` by default
+with `async` (since ES2017) we can create a function that returns a `Promise` by default
 
 +++
 
 ```js
-// the old-style syntax would read
-// async function succeed_or_fail(ms, success, what) {...}
-
 // return a promise that will
 // wait for 'ms' milliseconds
 // then fullfil or reject according to 'success'
@@ -458,6 +447,17 @@ succeed_or_fail(500, false, 'OOPS')
 // ditto
 ```
 
++++
+
+<div class="rise-footnote">
+
+the old-style syntax would read
+```js
+async function succeed_or_fail(ms, success, what) {...}
+```
+
+</div>
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## `await` keyword
@@ -465,8 +465,8 @@ succeed_or_fail(500, false, 'OOPS')
 +++
 
 * the `await` keyword allows to **wait for** the result of a promise
-* `await` can only be used inside an `async` function
-* and so it cannot be used in the global scope
+* `await` can only be used inside an `async` function  
+  and so it cannot be used in the global scope
 
 * question: why is that even needed ?
 * answer: what would happen in `succeed_or_fail` if we remove the `await` ?  
@@ -476,9 +476,10 @@ succeed_or_fail(500, false, 'OOPS')
 
 ## see also
 
-for those interested, more details on promises can be found in the rest of [this chapter on javascript.info](https://javascript.info/async) [starting here](https://javascript.info/promise-basics)
-
-also [this article on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) can come in handy
+this is just an overview, refer to
+* <https://javascript.info/promise-basics> for a more thorough description of promises
+* also [this article on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) can come in handy about promises too
+* and <https://javascript.info/async-await> about `async/await`
 
 +++
 
