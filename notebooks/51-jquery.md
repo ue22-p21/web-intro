@@ -47,7 +47,7 @@ tools.init()
 jQuery has been around for a very long time  
 with the objective to make **common operations**,  
 like **interactions with the DOM**   
-much **smoother**, and more **cross-browser**
+**smoother**, and more **cross-browser**
 
 it is still embedded in many applications,  
 so it is a **must know** component
@@ -90,15 +90,14 @@ it is easy to import the library from your own html documents
 +++
 
 real applications will use more sophisticated tools to deal with dependencies  
-most popular being essentially `npm` and/or `yarn`  
-that we will cover briefly in the optional material
+most popular being essentially `npm` and/or `yarn`
 
 however `cdnjs` remains quite convenient  
 if you use only a handful of 3rd party tools
 
 +++
 
-<p class="rise-footnote"> jQuery being mostly <b>browser-oriented</b>, 
+<p class="rise-footnote"> jQuery being mostly <b>browser-oriented</b>,
     running jQuery examples right in the notebook is not possible at this time</p>
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -109,7 +108,7 @@ if you use only a handful of 3rd party tools
 
 as per <https://jquery.com>
 
-> **What is jQuery?** 
+> **What is jQuery?**
 
 > jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
 
@@ -157,7 +156,7 @@ which is admittedly **a little simpler** than using native JavaScript functions
 
 likewise jQuery makes event handling nicer
 ```
-$("#button-container button").on( 
+$("#button-container button").on(
     "click",
      function( event ) {
         $("#banner-message").show();
@@ -179,7 +178,7 @@ means to add it to the list of things
 to be done once the page has loaded
 
 ```javascript
-////// 3 equivalent forms 
+////// 3 equivalent forms
 // using an arrow function
 $(() => console.log("loaded"))
 
@@ -202,60 +201,19 @@ $(loaded)
 * which makes things easier than with pure JavaScript
 * let us see how the example works exactly
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": "slide"}}
-
-### xkcd in the example (1)
-
-[available in a jsfiddle](http://jsfiddle.net/bbalkenhol/mMPXG/)
-
-* first step is to issue a request to the `url`  
-  you can use a new browser page, and paste the URL in the address bar  
-  you will see the kind of text that the request returns 
-  
-![](../media/xkcd-pass1.png)
-
-* this format is called JSON; it is easy to read  
-  from any language; you probably already   
-  have used data exposed in JSON
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### xkcd in the example (2)
-
-+++
-
-* this first request can, and probably will, take a noticeable time
-* `$.ajax` arranges so that once it returns:
-  * the result is parsed as being a JSON format (`dataType: "json"`)
-  * and the `success` callback function triggers
-* what the callback does step by step is:
-  * search by id the element `#xkcd-content`
-  * create under it 2 new sibling elements `<h1>` and `<img>`
-  * and fill them with data from the responsed JSON
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### xkcd in the example (3)
-
-+++
-
-this is what the DOM looks like after the success callback has completed  
-because `<img>`'s `src` attribute has changed  
-the browser goes and fetches the actual image content and displays it
-
-![](../media/xkcd-pass2.png)
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## example 2
-
 ```{code-cell}
-:hide_input: true
+:hide_input: false
 
-tools.sample_from_stem("../samples/51-jquery-colors")
+tools.sample_from_stem("../samples/51-jquery-colors", {start_with: 'js'})
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
+<div class="rise-footnote">
+
+for obscure security-related reasons, this example no longer works in the context of the notebook, but is otherwise valid
+
+</div>
+
++++ {"slideshow": {"slide_type": "slide"}, "hide_input": false}
 
 ## chaining
 
