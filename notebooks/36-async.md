@@ -248,6 +248,7 @@ p = get_url1(URL0)
 * it applies on a promise
 * a common pattern is to apply it **to the last `.then()` in the chain**
 * this way, any error occurring **at any stage** in the chain gets captured
+* catch(failureCallback) is short for then(null, failureCallback)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
