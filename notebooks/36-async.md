@@ -248,6 +248,7 @@ p = get_url1(URL0)
 * it applies on a promise
 * a common pattern is to apply it **to the last `.then()` in the chain**
 * this way, any error occurring **at any stage** in the chain gets captured
+* catch(failureCallback) is short for then(null, failureCallback)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -395,30 +396,44 @@ Promise.allSettled([URL_broken, URL_small, URL_large].map(get_url1))
 +++
 
 ```js
-// a function that creates a promise that will
-// successfully return 'what' after 'ms' milliseconds
-/*const*/ sleep = (ms, what) => {
+// a function that creates a promise that will take
+// one second to compute the inverse of a number
+/*const*/ delayedSafeInverse = (n) => {
     return new Promise(
         // executor is a function of 2 functions
         (resolve, reject) => {
-            setTimeout(() => resolve(what), ms)
-        // the executor could also call
-        // reject(some_error) if the promise is to fail
+          if (n!=0)
+            setTimeout(() => resolve(1/n), 1000)
+          else
+            reject(new Error("Cannot divide by 0"))
         })
 }
 ```
 
++++ {"slideshow": {"slide_type": "slide"}}
+
+## ...and calling it
+
 +++ {"cell_style": "center"}
 
 ```js
-p = sleep(500, 'YES')
+// you might now call it with a "then".
+delayedSafeInverse(4).then((result) => console.log(result))
+// will print to the console 16 after 1 sec.
+// and can even be simplified
+delayedSafeInverse(4).then(console.log)
+// and handle infinity
+delayedSafeInverse(0).then(console.log).catch((error) => console.log(error.message))
+
+//In the same spirit, the best way to create a promise that just wait is
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 ```
 
 +++
 
 <div class="rise-footnote">
 
-here again, there are limitations with the Jupyter environment; this time the code doe run in the notebook  
+here again, there are limitations with the Jupyter environment; this time the code does run in the notebook  
 but the notebook *hangs* until the promise is complete, so here again you may want to run this in a browser console
 
 </div>
@@ -434,21 +449,20 @@ with `async` (since ES2017) we can create a function that returns a `Promise` by
 +++
 
 ```js
-// return a promise that will
-// wait for 'ms' milliseconds
-// then fullfil or reject according to 'success'
-// its result (or err) will be 'what'
-/*const*/ succeed_or_fail = async (ms, success, what) => {
-    // see next slide
-    await sleep(ms)
-    if (success) {
-        // return means 'fulfilled'
-        return what
-    // or to fail
-    } else {
-        // throw means 'rejected'
-        throw what
-    }
+// another way to create a function that returns
+// the same promise
+/*const*/ delayedSafeInverseNG = async (n) => {
+  if (n!=0) {
+    // using the function sleep defined above
+    // (see next slide for await usage)
+    await sleep(1000)
+    // return means 'fulfilled'
+    return 1/n
+  }
+  else {
+    // throw means 'rejected'
+    throw new Error("Cannot divide by 0")
+  }
 }
 ```
 
@@ -456,7 +470,7 @@ with `async` (since ES2017) we can create a function that returns a `Promise` by
 
 ```js
 // a successful promise
-p1 = succeed_or_fail(500, true, 'YES')
+p1 = delayedSafeInverseNG(2)
 p1
 // wait a bit to inspect p1 again
 ```
@@ -465,7 +479,7 @@ p1
 
 ```js
 // a rejected promise
-succeed_or_fail(500, false, 'OOPS')
+delayedSafeInverseNG(0)
 // ditto
 ```
 
