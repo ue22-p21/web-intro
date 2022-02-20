@@ -169,7 +169,7 @@ URL_small = 'https://www.ebi.ac.uk/ena/browser/api/embl/AE000789?download=true'
 URL_large = 'https://www.ebi.ac.uk/ena/browser/api/embl/CP010053?download=true'
 ```
 
-+++
++++ {"slideshow": {"slide_type": "slide"}}
 
 ```js
 function get_url1(url) {
@@ -355,6 +355,28 @@ observe that the chained form is linear, which reflects the actual workflow here
 // **at the same time**
 for (let url of [URL_broken, URL_small, URL_large])
     get_url2(url)
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+## `Promise.all()`
+
++++
+
+* more to the point, when running several things in parallel like this,  
+  we may need to retrieve their results
+* that is the point of `Promise.all()` - [and similar](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#static_methods)
+* that create a promise from a collection of promises
+* and wait for some/all of them to complete
+
++++ {"cell_style": "center"}
+
+```js
+// here we use again get_url1
+// because it actually returns the URL size
+
+Promise.allSettled([URL_broken, URL_small, URL_large].map(get_url1))
+    .then(console.log)
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
