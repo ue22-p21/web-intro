@@ -248,7 +248,7 @@ p = get_url1(URL0)
 * it applies on a promise
 * a common pattern is to apply it **to the last `.then()` in the chain**
 * this way, any error occurring **at any stage** in the chain gets captured
-* catch(failureCallback) is short for then(null, failureCallback)
+* `catch(failureCallback)` is short for `then(null, failureCallback)`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -398,7 +398,7 @@ Promise.allSettled([URL_broken, URL_small, URL_large].map(get_url1))
 ```js
 // a function that creates a promise that will take
 // one second to compute the inverse of a number
-/*const*/ delayedSafeInverse = (n) => {
+const delayedSafeInverse = (n) => {
     return new Promise(
         // executor is a function of 2 functions
         (resolve, reject) => {
@@ -426,7 +426,7 @@ delayedSafeInverse(4).then(console.log)
 delayedSafeInverse(0).then(console.log).catch((error) => console.log(error.message))
 
 //In the same spirit, the best way to create a promise that just wait is
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 ```
 
 +++
@@ -451,7 +451,7 @@ with `async` (since ES2017) we can create a function that returns a `Promise` by
 ```js
 // another way to create a function that returns
 // the same promise
-/*const*/ delayedSafeInverseNG = async (n) => {
+const delayedSafeInverseAsync = async (n) => {
   if (n!=0) {
     // using the function sleep defined above
     // (see next slide for await usage)
@@ -470,7 +470,7 @@ with `async` (since ES2017) we can create a function that returns a `Promise` by
 
 ```js
 // a successful promise
-p1 = delayedSafeInverseNG(2)
+p1 = delayedSafeInverseAsync(2)
 p1
 // wait a bit to inspect p1 again
 ```
@@ -479,7 +479,7 @@ p1
 
 ```js
 // a rejected promise
-delayedSafeInverseNG(0)
+delayedSafeInverseAsync(0)
 // ditto
 ```
 
