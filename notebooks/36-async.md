@@ -520,3 +520,24 @@ this is just an overview, refer to
 +++
 
 ***
+
++++
+
+Notes about using `fetch` if that pans out right
+
+* `npm install -g node-fetch@2` (already pending in the Dockerfile)
+* the code below works as-is under plain node
+* however in this context it's not, maybe need to tweak the import...
+
+```{code-cell}
+URL_small = 'https://www.ebi.ac.uk/ena/browser/api/embl/AE000789?download=true'
+```
+
+```{code-cell}
+// that would work under node
+fetch = (await import("node-fetch")).default
+```
+
+```{code-cell}
+fetch(URL.small).then(console.log)
+```

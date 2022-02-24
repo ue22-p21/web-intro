@@ -6,6 +6,8 @@ FROM nbhosting/minimal-notebook
 # some npm build part named gyp still requires it
 RUN apt-get update && apt-get install -y gcc g++ make python
 
+# use latest node
+RUN conda update -y --update-all
 
 # !!! dirty trick!!!
 # original PATH is
@@ -47,4 +49,7 @@ RUN true \
 # that appears to ship with ijavascript
 # additional npm packages can of course be added, like e.g
 RUN npm install -g jsdom d3
+# used in the course on promises
+# gave a try to cross-fetch but it did not pan out
+RUN npm install node-fetch@2
 # RUN npm install -g ijavascript-plotly plotly-notebook-js
