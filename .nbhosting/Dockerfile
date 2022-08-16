@@ -4,7 +4,7 @@ FROM nbhosting/minimal-notebook
 # prerequisites with apt-get
 # we do install python(2) here because
 # some npm build part named gyp still requires it
-RUN apt-get update && apt-get install -y gcc g++ make python
+RUN apt-get update && apt-get install -y gcc g++ make python2
 
 
 # !!! dirty trick!!!
@@ -21,7 +21,7 @@ RUN ijsinstall
 
 # !!! clean up!!!
 USER root
-RUN apt-get autoremove -y python
+RUN apt-get autoremove -y python2
 ENV PATH="/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 
