@@ -51,5 +51,5 @@ RUN true \
 RUN npm install -g jsdom d3
 # used in the course on promises
 # gave a try to cross-fetch but it did not pan out
-RUN npm install node-fetch@2
+# RUN npm install node-fetch@2
 # RUN npm install -g ijavascript-plotly plotly-notebook-js
