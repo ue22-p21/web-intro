@@ -163,6 +163,10 @@ try this in a browser console (*):
 ```js
 <div class="rise-footnote">
 
+xxx SEE ALSO
+<https://github.com/n-riesco/ijavascript/issues/267#issuecomment-1272640544>
+for a possible workaround here
+
 (*) our JS code in Jupyter actually runs under a node.js kernel, 
     that does not have the `fetch()` function predefined  
 using `fetch()` would be possible of course, but requires installing additional dependencies  
