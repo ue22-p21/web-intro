@@ -161,6 +161,29 @@ try this in a browser console (*):
 +++
 
 ```js
+<div class="rise-footnote">
+
+(*) our JS code in Jupyter actually runs under a node.js kernel,
+that does not have the `fetch()` function predefined  
+using `fetch()` would be possible of course, but requires installing additional dependencies  
+all this is out of our scope, so let's keep it simple for now, and run stuff in the browser console instead
+
+</div>
+
+```{code-cell}
+// from within the browser this is **NOT NEEDED**
+// and will even likely fail, so let's do the import
+// only if needed
+
+try {
+    fetch()
+} catch {
+    // what did I tell you about loading JS modules ?
+    /*const*/ fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args))
+}
+```
+
+```{code-cell}
 // an invalid URL
 URL_broken = 'http://some-invalid/web/site'
 // a valid small DNA sample (60 kb)
@@ -169,9 +192,11 @@ URL_small = 'https://www.ebi.ac.uk/ena/browser/api/embl/AE000789?download=true'
 URL_large = 'https://www.ebi.ac.uk/ena/browser/api/embl/CP010053?download=true'
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-```js
+```{code-cell}
+---
+slideshow:
+  slide_type: slide
+---
 function get_url1(url) {
     // hope for the best (no error handling)
     let promise = fetch(url)
@@ -183,30 +208,23 @@ function get_url1(url) {
             return response.text()
         })
         .then(text => {
-            console.log(`actual page contains ${text.length} bytes`)
+            console.log(`${url} page contains ${text.length} bytes`)
             return text.length
         })
     return promise
 }
 ```
 
-+++
-
-<div class="rise-footnote">
-
-(*) our JS code in Jupyter runs under a node.js kernel, that does not have the `fetch()` function predefined  
-using `fetch()` would be possible of course, but requires installing additional dependencies  
-out of our scope, so let's keep it simple for now, and run stuff in the browser console instead
-
-</div>
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 let us observe this code running with a valid URL, and then an invalid, URL
 
-+++ {"cell_style": "split", "slideshow": {"slide_type": ""}}
-
-```js
+```{code-cell}
+---
+cell_style: split
+slideshow:
+  slide_type: ''
+---
 // a valid URL
 
 // observe how the console
@@ -224,7 +242,8 @@ console.log(p)
 // it is <fullfilled>
 ```
 
-+++ {"cell_style": "split"}
+```{code-cell}
+:cell_style: split
 
 ```js
 // an invalid URL
